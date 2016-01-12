@@ -55,7 +55,6 @@ body {
 
 span.cursor{
     font-size: 35px;
-	margin-left: 2px;
 	-webkit-animation: blink 0.7s infinite;
      -moz-animation: blink 0.7s infinite;
      animation: blink 0.7s infinite;
