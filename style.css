@@ -39,7 +39,7 @@ body {
 
 .wrapper a{
     color: white;
-    margin: 20px;
+    margin: 5px;
 }
 
 .wrapper i{
@@ -50,10 +50,22 @@ body {
 
 .wrapper .social{
     margin-top: 50px;
+    margin-left: -5px;
 }
 
+h1.name {
+    margin-bottom: 0;
+}
 
-span.cursor{
+span.info {
+    display: block;
+    font-size: 14px;
+    font-weight: 100;
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+span.cursor {
      font-size: 35px;
      margin-left: -3px;
      -webkit-animation: blink 0.7s infinite;
@@ -72,7 +84,8 @@ span.cursor{
     .wrapper h3 {
         font-size: 24px;
     }
-    .wrapper span{
+    .wrapper span.text,
+    .wrapper span.cursor{
         font-size: 22px;
     }
     .wrapper .social i {
@@ -83,6 +96,11 @@ span.cursor{
     }
     .wrapper .social {
         text-align: center;
+        width: 100%;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translate(-50%);
     }
 
 }
