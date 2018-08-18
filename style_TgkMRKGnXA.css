@@ -145,6 +145,17 @@ span.tags:before {
     }
 }
 
+@media (max-width: 640px) {
+    .social a {
+        width: 36px;
+        height: 36px;
+    }
+
+    .social i {
+        font-size: 14px;
+    }
+}
+
 @keyframes blink{
     0% { opacity:1; }
     50% { opacity:0; }
