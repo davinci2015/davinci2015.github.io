@@ -1,4 +1,6 @@
-$(function () {
+import './style.css'
+
+(function () {
     var message = {
         message: [
             'web development',
@@ -16,7 +18,7 @@ $(function () {
         },
 
         cacheElem: function () {
-            this.$text = $('.text')
+            this.$text = document.querySelector('.text')
         },
 
         type: function () {
@@ -26,13 +28,13 @@ $(function () {
 
             message = !this.deleteS ? message.slice(0, ++this.counterL) : message.slice(0, --this.counterL)
             if (this.message[this.counterS] != message && !this.deleteS) {
-                this.$text.text(message)
+                this.$text.innerHTML = message
                 speed = 50
             }
             else {
                 speed = this.message[this.counterS] == message ? 800 : 30
                 this.deleteS = true
-                this.$text.text(message)
+                this.$text.innerHTML = message
                 if (message == '') {
                     this.deleteS = false
                     this.counterS = this.counterS < this.message.length - 1 ? this.counterS + 1 : 0
@@ -44,4 +46,4 @@ $(function () {
         }
     }
     message.init()
-})
+})()
