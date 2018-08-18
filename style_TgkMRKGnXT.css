@@ -135,7 +135,9 @@ span.tags:before {
     .wrapper .social {
         position: absolute;
         bottom: 20px;
-        margin: 0 auto;
+        margin: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     span.tags {
