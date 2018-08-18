@@ -37,20 +37,36 @@ body {
     margin: 80px 10px 0px 10px;
 }
 
-.wrapper a{
-    color: white;
-    margin: 5px;
-}
-
-.wrapper i{
-    padding: 10px;
-    border: 2px solid white;
-    border-radius: 50%;
+.social i {
+    font-size: 16px;
 }
 
 .wrapper .social{
     margin-top: 50px;
     margin-left: -5px;
+}
+
+.social {
+    display: flex;
+    flex-direction: row;
+}
+
+.social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: white;
+    margin: 5px;
+    border: 2px solid white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 100ms linear;
+}
+
+.social a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 h1.name {
@@ -73,36 +89,58 @@ span.cursor {
      animation: blink 0.7s infinite;
 }
 
+span.tags {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 9px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    opacity: 0.25;
+}
+
+span.tags:before {
+    position: absolute;
+    content: "";
+    width: 46px;
+    bottom: 5px;
+    right: 112px;
+    height: 1px;
+    background: #ffff;
+    opacity: 0.9;
+}
+
 .social{
     position: relative;
 }
 
 @media (max-width: 768px) {
     .wrapper h1 {
-        font-size: 34px;
+        font-size: 32px;
+        line-height: 30px;
+        margin: 18px 0;
     }
     .wrapper h3 {
         font-size: 24px;
     }
-    .wrapper span.text,
-    .wrapper span.cursor{
-        font-size: 22px;
+
+    .wrapper .text--typing {
+        font-size: 18px;
     }
-    .wrapper .social i {
-        font-size: 22px;
-    }
+
     .wrapper .social a {
         margin: 5px;
     }
+
     .wrapper .social {
-        text-align: center;
-        width: 100%;
         position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translate(-50%);
+        bottom: 20px;
+        margin: 0 auto;
     }
 
+    span.tags {
+        display: none;
+    }
 }
 
 @keyframes blink{

@@ -4,7 +4,7 @@ $(function () {
             'web development',
             'eye candy design',
             'good movie and kokice',
-            'sve što vole mladi;'
+            'sve što vole mladi'
         ],
         counterS: 0,
         counterL: 0,
@@ -27,10 +27,10 @@ $(function () {
             message = !this.deleteS ? message.slice(0, ++this.counterL) : message.slice(0, --this.counterL)
             if (this.message[this.counterS] != message && !this.deleteS) {
                 this.$text.text(message)
-                speed = 60
+                speed = 50
             }
             else {
-                speed = this.message[this.counterS] == message ? 1000 : 30
+                speed = this.message[this.counterS] == message ? 800 : 30
                 this.deleteS = true
                 this.$text.text(message)
                 if (message == '') {
