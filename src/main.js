@@ -4,9 +4,9 @@ import "./style.css";
     var message = {
         message: [
             "developing web applications",
-            "working on an exciting and challenging projects",
-            "transparent and team-work oriented company culture",
-            "to give a presentations about software development",
+            "working on exciting and challenging projects",
+            "a transparent and team-work oriented company culture",
+            "to give presentations about software development",
             "spring without too much rain",
             "a fruit tea",
         ],
