@@ -94,15 +94,15 @@
       }
       body {
         background-image: linear-gradient(
-          to top,
+          -45deg,
           #010813,
           #002837,
           #004646,
           #006438,
           #5a7c0d
         );
-        background-attachment: fixed;
-        background-repeat: no-repeat;
+        background-size: 400% 400%;
+        animation: gradient 60s ease infinite;
         font-family: "Dosis", sans-serif;
         color: white;
       }
@@ -170,7 +170,7 @@
 
       ul.description {
         display: block;
-        font-size: 22px;
+        font-size: 26px;
         font-weight: 100;
         margin-bottom: 20px;
         padding: 0;
@@ -224,6 +224,10 @@
           transform: translateX(-50%);
         }
 
+        ul.description {
+          font-size: 18px;
+        }
+
         span.tags {
           display: none;
         }
@@ -237,6 +241,18 @@
 
         .social i {
           font-size: 14px;
+        }
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
         }
       }
 
@@ -292,7 +308,7 @@
       <h1 class="name">DANIJEL VINCIJANOVIĆ</h1>
       <ul class="description">
         <li>💻 &nbsp;Full-Stack Developer</li>
-        <li>🐟 &nbsp;Aquascaper</li>
+        <li>🌿 &nbsp;Aquascaper</li>
         <li>📸 &nbsp;Amateur photographer</li>
         <li>💪 &nbsp;Fitness enthusiast</li>
       </ul>
