@@ -10,6 +10,11 @@
   min-height: 50vh;
 }
 
+.Hero img {
+  margin-bottom: 1rem;
+  border-radius: 100%;
+}
+
 .Hero .Title {
   margin: 0 0 1.5rem 0;
   font-weight: 700;
@@ -49,6 +54,17 @@
   width: 36px;
   height: 36px;
   transform-origin: 70% 70%;
+}
+
+.Social {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.Social a {
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -96,12 +112,4 @@
   .Hero {
     display: block;
   }
-}
-
-.CalendlyButton {
-  background: none;
-  border-radius: var(--border-radius);
-  border: 0.125rem solid var(--primary-color);
-  background: var(--background-color);
-  padding: 0.5rem 1.5rem;
 }

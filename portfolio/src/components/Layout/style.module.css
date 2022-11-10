@@ -6,7 +6,3 @@
   grid-template-columns: 100%;
   grid-template-rows: auto 1fr auto;
 }
-
-.Layout main {
-  margin-top: 2rem;
-}
