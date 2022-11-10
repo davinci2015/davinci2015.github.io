@@ -1,0 +1,24 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  font-weight: normal;
+  margin: 0;
+  word-wrap: break-word;
+}
+* {
+  box-sizing: inherit;
+}
+*:before {
+  box-sizing: inherit;
+}
+*:after {
+  box-sizing: inherit;
+}

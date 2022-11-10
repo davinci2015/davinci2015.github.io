@@ -2,14 +2,14 @@ import React from "react"
 
 import { Header } from ".."
 
-import "./layout.css"
+import * as classes from "./layout.module.css"
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div className={classes.Layout}>
       <Header />
-      {children}
-    </>
+      <main>{children}</main>
+    </div>
   )
 }
 
