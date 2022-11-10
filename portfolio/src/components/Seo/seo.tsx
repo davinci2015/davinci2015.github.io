@@ -14,7 +14,7 @@ type Props = {
   children?: React.ReactNode
 }
 
-function Seo({ description, title, children }: Props) {
+export const Seo = ({ description, title, children }: Props) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -47,5 +47,3 @@ function Seo({ description, title, children }: Props) {
     </>
   )
 }
-
-export default Seo
