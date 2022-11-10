@@ -1,4 +1,9 @@
-const buildArticles = async ({ graphql, createPage, reporter }) => {
+const path = require("path")
+const layout = path.resolve(`./src/components/layout.tsx`)
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions
+
   const result = await graphql(`
     query {
       allMdx {
@@ -24,12 +29,7 @@ const buildArticles = async ({ graphql, createPage, reporter }) => {
   articles.forEach(node => {
     createPage({
       path: `/blog${node.frontmatter.slug}`,
-      component: node.internal.contentFilePath,
+      component: `${layout}?__contentFilePath=${node.internal.contentFilePath}`,
     })
   })
-}
-
-exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions
-  buildArticles({ graphql, createPage, reporter })
 }
