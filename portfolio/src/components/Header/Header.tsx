@@ -13,7 +13,7 @@ export function Header(): React.ReactElement {
     <>
       <Button
         as="a"
-        href="../../documents/Resume.pdf"
+        href="../../Resume.pdf"
         download="danijel_vincijanovic.pdf"
       >
         Resume
