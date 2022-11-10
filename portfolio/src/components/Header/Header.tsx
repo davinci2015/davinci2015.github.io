@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { useMediaQuery } from "../../hooks/useMediaQuery"
-import { Animation } from ".."
+import { Animation, Logo } from ".."
 
 import * as classes from "./style.module.css"
 
@@ -68,7 +68,7 @@ export function Header(): React.ReactElement {
     <header className={classes.Header}>
       <Animation className={classes.ContentWrapper} type="fadeDown">
         <Link to="/" aria-label="home">
-          Danijel
+          <Logo />
         </Link>
         {isDesktopBreakpoint ? topNavigationBar : sideNavigationBar}
       </Animation>
