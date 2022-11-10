@@ -20,14 +20,14 @@ export const Hero = () => (
           <Button as="a" href="https://hr.linkedin.com/in/davinci2015">
             LinkedIn
           </Button>
-          <Button as="a" href="https://medium.com/@danijel.vincijanovic">
-            Medium
-          </Button>
           <Button as="a" href="https://github.com/davinci2015">
             GitHub
           </Button>
           <Button as="a" href="https://codepen.io/davinci">
             Codepen
+          </Button>
+          <Button as="a" href="https://medium.com/@danijel.vincijanovic">
+            Medium
           </Button>
           <Button as="a" href="https://dev.to/davinc">
             Dev.to

@@ -11,14 +11,11 @@ export function Header(): React.ReactElement {
 
   const navigationItems = (
     <>
-      <Link
-        to={""}
-        className={classes.NavLink}
-        onClick={!isDesktopBreakpoint ? () => setOpen(!open) : undefined}
+      <Button
+        as="a"
+        href="../../documents/Resume.pdf"
+        download="danijel_vincijanovic.pdf"
       >
-        Link
-      </Link>
-      <Button as="a" href="">
         Resume
       </Button>
     </>

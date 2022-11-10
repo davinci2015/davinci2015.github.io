@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Animation, Button, Section } from "../../components"
+import { Animation } from "../../components"
 
 import * as classes from "./style.module.css"
 

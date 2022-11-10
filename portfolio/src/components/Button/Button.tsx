@@ -16,6 +16,7 @@ type Props = CommonProps &
     | {
         as: "a"
         href: string
+        download?: string
       }
   )
 
@@ -35,6 +36,7 @@ export const Button = (props: Props) => {
         target="_blank"
         rel="noopener noreferrer"
         className={classes.Button}
+        download={props.download}
       >
         {props.children}
       </a>
