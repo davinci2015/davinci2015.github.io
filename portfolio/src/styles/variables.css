@@ -13,14 +13,10 @@
   --page-width: 62.5rem;
   --page-padding: 2rem;
 
-  --primary-color: #fafafa;
-  --secondary-color: #9aa297;
-  --tertiary-color: #252525;
-  --text-color: rgba(255, 255, 255, 0.87);
+  --primary-color: #e5e5e5;
+  --secondary-color: #fca311;
+  --tertiary-color: #fca311;
+  --text-color: #ffffff;
   --subtext-color: #aaaaaa;
-  --background-color: #2e3033;
-  --card-background-color: #1c1c1c;
-  --scroll-bar-color: rgba(255, 255, 255, 0.5);
-  --box-shadow-color: rgba(0, 0, 0, 0.16);
-  --box-shadow-hover-color: rgba(0, 0, 0, 0.32);
+  --background-color: #000000;
 }

@@ -29,9 +29,10 @@
   line-height: 1.5rem;
 }
 
-.Hero p {
-  font-size: 1.125rem;
+.Hero .Tag {
+  font-size: 1.2rem;
   margin-bottom: 2rem;
+  font-style: italic;
 }
 
 .Intro {

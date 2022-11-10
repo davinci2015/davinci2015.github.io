@@ -15,7 +15,7 @@ export const Hero = () => (
           I'm <u>Danijel</u> Vincijanović.
         </h1>
         <h2 className={classes.Subtitle}></h2>
-        <p>Full Stack Engineer.</p>
+        <p className={classes.Tag}>#full_stack_engineer</p>
         <div className={classes.Social}>
           <Button as="a" href="https://hr.linkedin.com/in/davinci2015">
             LinkedIn
