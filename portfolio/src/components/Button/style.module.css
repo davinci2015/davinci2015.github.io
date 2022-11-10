@@ -1,0 +1,15 @@
+.Button {
+  width: auto;
+  height: auto;
+  border-radius: var(--border-radius);
+  border: 0.125rem solid var(--primary-color);
+  background: var(--background-color);
+  padding: 0.5rem 1.5rem;
+  transition: all 200ms ease-out;
+  color: var(--primary-color);
+}
+
+.Button:hover {
+  background: var(--primary-color);
+  color: var(--background-color);
+}

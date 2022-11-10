@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { useMediaQuery } from "../../hooks/useMediaQuery"
-import { Animation, Logo } from ".."
+import { Animation, Logo, Button } from ".."
 
 import * as classes from "./style.module.css"
 
@@ -18,15 +18,9 @@ export function Header(): React.ReactElement {
       >
         Link
       </Link>
-      <a
-        href=""
-        target="_blank"
-        rel="noopener noreferrer"
-        className={classes.CtaButton}
-        onClick={!isDesktopBreakpoint ? () => setOpen(!open) : undefined}
-      >
+      <Button as="a" href="">
         Resume
-      </a>
+      </Button>
     </>
   )
 

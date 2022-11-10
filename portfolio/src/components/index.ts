@@ -1,7 +1,9 @@
 import { Header } from "./Header/Header"
 import { Animation } from "./Animation/Animation"
 import { Seo } from "./Seo/seo"
-import Layout from "./Layout/Layout"
 import { Logo } from "./Logo/Logo"
+import { Section } from "./Section/Section"
+import { Button } from "./Button/Button"
+import Layout from "./Layout/Layout"
 
-export { Header, Animation, Seo, Layout, Logo }
+export { Header, Animation, Seo, Layout, Logo, Section, Button }
