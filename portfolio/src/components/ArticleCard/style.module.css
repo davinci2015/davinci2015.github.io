@@ -1,0 +1,22 @@
+.Article {
+  cursor: pointer;
+  border: 2px solid white;
+  border-radius: var(--border-radius);
+}
+
+.Article p {
+  color: var(--text-color);
+  font-size: 0.75rem;
+}
+
+.Article .Description {
+  padding: 1rem;
+  padding-top: 0;
+}
+
+.Article .ImageWrapper {
+  height: 100%;
+  max-height: 10rem;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}

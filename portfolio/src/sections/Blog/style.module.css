@@ -1,0 +1,19 @@
+.Blog {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.Title {
+  margin-bottom: 2rem;
+}
+
+.Articles {
+  display: flex;
+  margin: -1rem;
+}
+
+.Article {
+  max-width: 33%;
+  margin: 1rem;
+}

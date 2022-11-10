@@ -2,7 +2,7 @@ import * as React from "react"
 import { PopupButton } from "react-calendly"
 
 import { Animation, Layout, Seo } from "../components"
-import { Hero } from "../sections"
+import { Blog, Hero } from "../sections"
 
 import * as classes from "./index.module.css"
 import arrow from "../images/curly-dotted-arrow-svgrepo-com.svg"
@@ -21,6 +21,7 @@ const IndexPage = () => (
         />
       </div>
     </Animation>
+    <Blog />
   </Layout>
 )
 
