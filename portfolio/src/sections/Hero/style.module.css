@@ -1,5 +1,15 @@
-.HeroContainer {
+.Container {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ProfileImage {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border: 4px solid white;
+  margin-right: 4rem;
 }
 
 .Hero {
@@ -76,7 +86,7 @@
   }
 
   .Hero .Subtitle {
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 3rem;
   }
 
