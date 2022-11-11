@@ -18,7 +18,7 @@ export const Hero = () => (
             I'm <u>Danijel</u> Vincijanović.
           </h1>
           <h2 className={classes.Subtitle}>
-            I code and help your team and product grow. Like a gardener.
+            I code and help teams and products grow. Like a gardener.
           </h2>
           <p className={classes.Tag}>#react #node #typescript #elixir</p>
           <div className={classes.Social}>
