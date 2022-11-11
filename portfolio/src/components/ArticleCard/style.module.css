@@ -15,8 +15,16 @@
 }
 
 .Article .ImageWrapper {
+  display: block;
+  position: relative;
   height: 100%;
   max-height: 10rem;
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.Article .Image {
+  height: 100%;
+  width: 100%;
 }

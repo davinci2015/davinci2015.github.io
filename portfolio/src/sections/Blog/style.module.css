@@ -9,11 +9,10 @@
 }
 
 .Articles {
-  display: flex;
-  margin: -1rem;
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
 .Article {
-  max-width: 33%;
-  margin: 1rem;
 }
