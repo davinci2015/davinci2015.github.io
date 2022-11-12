@@ -13,12 +13,14 @@ const IndexPage = () => (
     <Animation type="fadeUp" delay={300}>
       <div className={classes.Calendly}>
         <img src={arrow} alt="arrow" />
-        <PopupButton
-          url="https://calendly.com/danijel-vincijanovic"
-          rootElement={document.body}
-          className={classes.CalendlyButton}
-          text="Don't be a stranger — let's talk ☕"
-        />
+        {typeof document !== "undefined" && (
+          <PopupButton
+            url="https://calendly.com/danijel-vincijanovic"
+            rootElement={document.body}
+            className={classes.CalendlyButton}
+            text="Don't be a stranger — let's talk ☕"
+          />
+        )}
       </div>
     </Animation>
     <Blog />
