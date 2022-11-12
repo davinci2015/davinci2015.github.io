@@ -6,10 +6,10 @@
 }
 
 .Calendly img {
-  width: 120px;
+  width: 160px;
   transform: rotate(180deg) rotateY(180deg);
   margin-bottom: 2rem;
-  margin-left: -200px;
+  margin-left: -100px;
 }
 
 .CalendlyButton {
@@ -29,4 +29,11 @@
 .CalendlyButton:hover {
   background: var(--primary-color);
   color: var(--background-color);
+}
+
+@media (min-width: 1200px) {
+  .Calendly img {
+    width: 120px;
+    margin-left: -200px;
+  }
 }

@@ -1,7 +1,12 @@
 .Article {
   cursor: pointer;
-  border: 2px solid white;
+  border: 2px dashed white;
   border-radius: var(--border-radius);
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .Article p {
@@ -25,6 +30,7 @@
 }
 
 .Article .Image {
+  object-fit: cover;
   height: 100%;
   width: 100%;
 }

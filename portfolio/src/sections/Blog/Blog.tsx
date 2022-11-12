@@ -6,6 +6,43 @@ import * as classes from "./style.module.css"
 
 const externalArticles = [
   {
+    url: "https://dev.to/davinc/graphql-for-beginners-3f1a",
+    image:
+      "https://res.cloudinary.com/practicaldev/image/fetch/s--vCc5nxpB--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/ri077rx0yvxun1jaubid.png",
+    title: "GraphQL for beginners",
+    date: "Feb 14, 2020",
+    readingTime: "7",
+  },
+  {
+    url: "https://dev.to/cobe_tech/is-this-1-000-00-worth-node-script-548l",
+    image:
+      "https://res.cloudinary.com/practicaldev/image/fetch/s--Lvl1ZNKy--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1ph7yc1i1vqqgwpxegw5.png",
+    title: "Is this a €1.000,00 worth Node script?",
+    date: "Aug 29, 2019",
+    readingTime: "5",
+  },
+  {
+    url: "https://medium.com/cobe-mobile/santa-react-patterns-giveaway-4th-week-f9e6a9b03140",
+    image: "https://miro.medium.com/max/1400/1*jOt_9V1NNccwQcdt-3D6ig.webp",
+    title: "Santa React patterns giveaway — 4th week",
+    date: "Dec 31, 2018",
+    readingTime: "4",
+  },
+  {
+    url: "https://medium.com/cobe-mobile/santa-react-patterns-giveaway-3rd-week-161a945117a3",
+    image: "https://miro.medium.com/max/1400/1*EBb-wTwcoq23mRDlnH-b4Q.png",
+    title: "Santa React patterns giveaway — 3rd week",
+    date: "Dec 27, 2018",
+    readingTime: "4",
+  },
+  {
+    url: "https://medium.cobeisfresh.com/santa-react-patterns-giveaway-2nd-week-b7d09b9f7c01",
+    image: "https://miro.medium.com/max/1400/1*lulgCu8aqWw3-Qp3fMuvTw.webp",
+    title: "Santa React patterns giveaway — 2nd week",
+    date: "Dec 21, 2018",
+    readingTime: "5",
+  },
+  {
     url: "https://medium.cobeisfresh.com/santa-react-patterns-giveaway-bc5bab7c2b9b",
     image: "https://miro.medium.com/max/1400/1*ylRrUig8T8KHdF3jda-q_Q.png",
     title: "Santa React patterns giveaway",
@@ -35,50 +72,25 @@ const externalArticles = [
   },
 ]
 
-export const Blog = () => {
-  /*
-  Once we start migrating to blog inside the website we can use this query:
-  const data = useStaticQuery(graphql`
-    query BlogQuery {
-      allMdx {
-        nodes {
-          frontmatter {
-            slug
-            title
-            date
-            readingTime
-            image {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-  */
-
-  return (
-    <Animation type="fadeUp" delay={400}>
-      <Section anchor="blog">
-        <div className={classes.Blog}>
-          <h1 className={classes.Title}>Latest Articles</h1>
-          <div className={classes.Articles}>
-            {externalArticles.map(article => (
-              <div key={article.url} className={classes.Article}>
-                <ArticleCard
-                  url={article.url}
-                  image={article.image}
-                  title={article.title}
-                  date={article.date}
-                  readingTime={article.readingTime}
-                />
-              </div>
-            ))}
-          </div>
+export const Blog = () => (
+  <Animation type="fadeUp" delay={400}>
+    <Section anchor="blog">
+      <div className={classes.Blog}>
+        <h1 className={classes.Title}>Latest Articles</h1>
+        <div className={classes.Articles}>
+          {externalArticles.map(article => (
+            <div key={article.url}>
+              <ArticleCard
+                url={article.url}
+                image={article.image}
+                title={article.title}
+                date={article.date}
+                readingTime={article.readingTime}
+              />
+            </div>
+          ))}
         </div>
-      </Section>
-    </Animation>
-  )
-}
+      </div>
+    </Section>
+  </Animation>
+)
