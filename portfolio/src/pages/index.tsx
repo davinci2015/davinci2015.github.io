@@ -10,7 +10,7 @@ import arrow from "../images/curly-dotted-arrow-svgrepo-com.svg"
 const IndexPage = () => (
   <Layout>
     <Hero />
-    <Animation type="fadeUp" delay={700}>
+    <Animation type="fadeUp" delay={300}>
       <div className={classes.Calendly}>
         <img src={arrow} alt="arrow" />
         <PopupButton

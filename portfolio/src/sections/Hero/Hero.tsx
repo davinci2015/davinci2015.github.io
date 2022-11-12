@@ -7,7 +7,7 @@ import profile from "../../images/profile.jpg"
 
 export const Hero = () => (
   <Section anchor="hero">
-    <Animation type="fadeUp" delay={400}>
+    <Animation type="fadeUp" delay={300}>
       <div className={classes.Container}>
         <img className={classes.ProfileImage} src={profile} alt="profile" />
         <div className={classes.Hero}>

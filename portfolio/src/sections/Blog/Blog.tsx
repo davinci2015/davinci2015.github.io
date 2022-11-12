@@ -73,7 +73,7 @@ const externalArticles = [
 ]
 
 export const Blog = () => (
-  <Animation type="fadeUp" delay={400}>
+  <Animation type="fadeUp" delay={300}>
     <Section anchor="blog">
       <div className={classes.Blog}>
         <h1 className={classes.Title}>Latest Articles</h1>
