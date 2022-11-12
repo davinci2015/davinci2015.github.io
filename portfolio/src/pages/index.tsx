@@ -1,7 +1,7 @@
 import * as React from "react"
 import { PopupButton } from "react-calendly"
 
-import { Animation, Layout, Seo } from "../components"
+import { Animation, CalendlyButton, Layout, Seo } from "../components"
 import { Blog, Hero } from "../sections"
 
 import * as classes from "./index.module.css"
@@ -13,14 +13,7 @@ const IndexPage = () => (
     <Animation type="fadeUp" delay={300}>
       <div className={classes.Calendly}>
         <img src={arrow} alt="arrow" />
-        {typeof document !== "undefined" && (
-          <PopupButton
-            url="https://calendly.com/danijel-vincijanovic"
-            rootElement={document.body}
-            className={classes.CalendlyButton}
-            text="Don't be a stranger — let's talk ☕"
-          />
-        )}
+        <CalendlyButton text="Don't be a stranger — let's talk ☕" />
       </div>
     </Animation>
     <Blog />

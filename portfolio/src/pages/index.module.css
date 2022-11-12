@@ -12,25 +12,6 @@
   margin-left: -100px;
 }
 
-.CalendlyButton {
-  cursor: pointer;
-  width: auto;
-  height: auto;
-  border-radius: var(--border-radius);
-  border: 0.125rem solid var(--primary-color);
-  background: var(--background-color);
-  padding: 0.5rem 1.5rem;
-  transition: all 200ms ease-out;
-  color: var(--primary-color);
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.CalendlyButton:hover {
-  background: var(--primary-color);
-  color: var(--background-color);
-}
-
 @media (min-width: 1200px) {
   .Calendly img {
     width: 120px;
