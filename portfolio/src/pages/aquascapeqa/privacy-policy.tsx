@@ -1,101 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Tank Check Privacy Policy</title>
+import React from "react"
 
-    <!-- Meta tags -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width" />
-    <meta
-      name="viewport"
-      content="initial-scale=1, maximum-scale=1, user-scalable=no"
-    />
+import { Layout, Seo } from "../../components"
 
-    <!-- Favicon -->
-    <link
-      rel="apple-touch-icon"
-      sizes="57x57"
-      href="../favicon/apple-icon-57x57.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="60x60"
-      href="../favicon/apple-icon-60x60.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="72x72"
-      href="../favicon/apple-icon-72x72.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="76x76"
-      href="../favicon/apple-icon-76x76.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="114x114"
-      href="../favicon/apple-icon-114x114.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="120x120"
-      href="../favicon/apple-icon-120x120.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="144x144"
-      href="../favicon/apple-icon-144x144.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="152x152"
-      href="../favicon/apple-icon-152x152.png"
-    />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="../favicon/apple-icon-180x180.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="../favicon/android-icon-192x192.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="../favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="96x96"
-      href="../favicon/favicon-96x96.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="../favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="../favicon/manifest.json" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-    <meta name="theme-color" content="#ffffff" />
-
-    <!-- Links -->
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <strong>Privacy Policy</strong>
+const PrivacyPolicy = () => (
+  <Layout>
+    <h1>Tank Check - Privacy Policy</h1>
     <p>
       Danijel Vincijanović built the Tank Check app as a Free app. This SERVICE
       is provided by Danijel Vincijanović at no cost and is intended for use as
@@ -118,12 +27,16 @@
       Terms and Conditions, which are accessible at Tank Check unless otherwise
       defined in this Privacy Policy.
     </p>
-    <p><strong>Information Collection and Use</strong></p>
+    <p>
+      <strong>Information Collection and Use</strong>
+    </p>
     <p>
       For a better experience, while using our Service, I require you to provide
       us with unique mobile id.
     </p>
-    <p><strong>Log Data</strong></p>
+    <p>
+      <strong>Log Data</strong>
+    </p>
     <p>
       I want to inform you that whenever you use my Service, in a case of an
       error in the app I collect data and information (through third-party
@@ -133,7 +46,9 @@
       utilizing my Service, the time and date of your use of the Service, and
       other statistics.
     </p>
-    <p><strong>Service Providers</strong></p>
+    <p>
+      <strong>Service Providers</strong>
+    </p>
     <p>
       I may employ third-party companies and individuals due to the following
       reasons:
@@ -150,7 +65,9 @@
       assigned to them on our behalf. However, they are obligated not to
       disclose or use the information for any other purpose.
     </p>
-    <p><strong>Security</strong></p>
+    <p>
+      <strong>Security</strong>
+    </p>
     <p>
       I value your trust in providing us your Personal Information, thus we are
       striving to use commercially acceptable means of protecting it. But
@@ -158,7 +75,9 @@
       electronic storage is 100% secure and reliable, and I cannot guarantee its
       absolute security.
     </p>
-    <p><strong>Links to Other Sites</strong></p>
+    <p>
+      <strong>Links to Other Sites</strong>
+    </p>
     <p>
       This Service may contain links to other sites. If you click on a
       third-party link, you will be directed to that site. Note that these
@@ -167,7 +86,9 @@
       assume no responsibility for the content, privacy policies, or practices
       of any third-party sites or services.
     </p>
-    <p><strong>Children’s Privacy</strong></p>
+    <p>
+      <strong>Children’s Privacy</strong>
+    </p>
     <div>
       <p>
         These Services do not address anyone under the age of 13. I do not
@@ -179,18 +100,25 @@
         that I will be able to do the necessary actions.
       </p>
     </div>
-    <!---->
-    <p><strong>Changes to This Privacy Policy</strong></p>
+    <p>
+      <strong>Changes to This Privacy Policy</strong>
+    </p>
     <p>
       I may update our Privacy Policy from time to time. Thus, you are advised
       to review this page periodically for any changes. I will notify you of any
       changes by posting the new Privacy Policy on this page.
     </p>
     <p>This policy is effective as of 2022-10-22</p>
-    <p><strong>Contact Us</strong></p>
+    <p>
+      <strong>Contact Us</strong>
+    </p>
     <p>
       If you have any questions or suggestions about my Privacy Policy, do not
       hesitate to contact me at danijel.vincijanovic@gmail.com.
     </p>
-  </body>
-</html>
+  </Layout>
+)
+
+export const Head = () => <Seo title="Tank Check - Privacy Policy" />
+
+export default PrivacyPolicy
