@@ -2,7 +2,7 @@ import * as React from "react"
 import { PopupButton } from "react-calendly"
 
 import { Animation, CalendlyButton, Layout, Seo } from "../components"
-import { Blog, Hero } from "../sections"
+import { Blog, Hero, References } from "../sections"
 
 import * as classes from "./index.module.css"
 import arrow from "../images/curly-dotted-arrow-svgrepo-com.svg"
@@ -16,6 +16,7 @@ const IndexPage = () => (
         <CalendlyButton text="Don't be a stranger — let's talk ☕" />
       </div>
     </Animation>
+    <References />
     <Blog />
   </Layout>
 )

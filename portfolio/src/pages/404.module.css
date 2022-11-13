@@ -32,14 +32,14 @@
   }
 }
 
-div:before,
-div:after {
+.NotFound:before,
+.NotFound:after {
   content: attr(title);
   position: absolute;
   left: 0;
 }
 
-div:before {
+.NotFound:before {
   animation: glitchTop 1s linear infinite;
   clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
@@ -59,7 +59,7 @@ div:before {
   }
 }
 
-div:after {
+.NotFound:after {
   animation: glitchBotom 1.5s linear infinite;
   clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
   -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);

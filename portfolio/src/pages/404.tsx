@@ -1,5 +1,4 @@
 import * as React from "react"
-import { PopupButton } from "react-calendly"
 
 import { CalendlyButton, Layout, Seo } from "../components"
 
