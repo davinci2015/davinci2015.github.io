@@ -22,7 +22,7 @@ export const Hero = () => (
           </h2>
           <p className={classes.Tag}>#react #node #typescript #elixir</p>
           <div className={classes.Social}>
-            <Button as="a" href="https://hr.linkedin.com/in/davinci2015">
+            <Button as="a" href="https://www.linkedin.com/in/davinci2015">
               LinkedIn
             </Button>
             <Button as="a" href="https://github.com/davinci2015">
