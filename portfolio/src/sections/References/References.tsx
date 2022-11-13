@@ -95,7 +95,7 @@ export const References = () => {
       <Animation type="fadeUp" delay={300}>
         <div className={classes.Container}>
           <h2>
-            <u>Beautiful</u> people that could tell you more about my work.
+            <u>Colleagues</u> that could tell you more about my work.
           </h2>
           <p>Feel free to contact them but don't spam 🙃</p>
           <div className={classes.References}>
