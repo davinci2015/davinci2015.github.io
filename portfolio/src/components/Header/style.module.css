@@ -31,7 +31,7 @@
   font-weight: 700;
   text-align: center;
   color: var(--primary-color);
-  margin-right: 4rem;
+  margin-right: 2rem;
 }
 
 .TopNavigationBar a:last-child {
@@ -59,4 +59,10 @@
 
 .TopNavigationBar a.NavLink:hover::before {
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  .TopNavigationBar a {
+    margin-right: 4rem;
+  }
 }

@@ -6,8 +6,8 @@
 }
 
 .Blog {
-  margin: 4rem auto;
-  max-width: 70%;
+  margin: 2rem auto;
+  max-width: 90%;
   font-family: "Lora", serif;
 }
 
@@ -61,7 +61,16 @@
   background-color: #1e1e1e;
 }
 
+.Blog img {
+  width: 100%;
+}
+
 @media (min-width: 768px) {
+  .Blog {
+    margin: 4rem auto;
+    max-width: 70%;
+  }
+
   .Blog p,
   .Blog li,
   .Blog a {

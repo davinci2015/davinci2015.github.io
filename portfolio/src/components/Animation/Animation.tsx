@@ -42,24 +42,24 @@ export const Animation = (props: AnimationProps) => {
   const count = props.iterationCount ?? 1
   const fillMode = props.fillMode ?? "backwards"
 
+  const style = onScreen
+    ? {
+        ...props.style,
+        animationName: `${type}`,
+        animationTimingFunction: `${timing}`,
+        animationDuration: `${duration}ms`,
+        animationDelay: `${delay}ms`,
+        animationIterationCount: `${count}`,
+        animationFillMode: `${fillMode}`,
+      }
+    : { ...props.style, opacity: 0 }
+
   return (
     <div
       ref={ref}
       className={props.className}
       onAnimationEnd={props.onAnimationEnd}
-      style={
-        onScreen
-          ? {
-              ...props.style,
-              animationName: `${type}`,
-              animationTimingFunction: `${timing}`,
-              animationDuration: `${duration}ms`,
-              animationDelay: `${delay}ms`,
-              animationIterationCount: `${count}`,
-              animationFillMode: `${fillMode}`,
-            }
-          : { ...props.style, opacity: 0 }
-      }
+      style={style}
     >
       {props.children}
     </div>
