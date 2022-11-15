@@ -102,7 +102,7 @@ export const Blog = ({ maxArticlesToShow, title }: Props) => {
             {[...articles, ...externalArticles]
               .slice(0, maxArticlesToShow)
               .map(article => (
-                <div key={article.url}>
+                <div key={article.url || article.frontmatter?.slug}>
                   <ArticleCard
                     slug={article.frontmatter?.slug}
                     url={article.url}

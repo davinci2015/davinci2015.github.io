@@ -2,7 +2,7 @@ import { useState, useEffect, MutableRefObject } from "react"
 
 export function useOnScreen<T>(
   ref: MutableRefObject<T | undefined>,
-  threshold = 0.25
+  threshold = 0
 ): boolean {
   const [isIntersecting, setIntersecting] = useState(false)
 
