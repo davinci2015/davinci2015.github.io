@@ -1,7 +1,3 @@
-.Container {
-  margin-top: 6rem;
-}
-
 .References {
   width: 100%;
   display: inline-grid;
@@ -31,6 +27,12 @@
 
   border: 2px dashed white;
   border-radius: var(--border-radius);
+
+  transition: border 200ms ease-in-out;
+}
+
+.Reference:hover {
+  border: 2px dashed var(--secondary-color);
 }
 
 .Reference p {

@@ -93,23 +93,21 @@ export const References = () => {
   return (
     <Section anchor="references">
       <Animation type="fadeUp" delay={300}>
-        <div className={classes.Container}>
-          <h2>
-            <u>Colleagues</u> that could tell you more about my work.
-          </h2>
-          <p>Feel free to contact them but don't spam 🙃</p>
-          <div className={classes.References}>
-            {references.map(reference => (
-              <div className={classes.Reference}>
-                {renderImage(reference)}
-                <p>{reference.name}</p>
-                <span>{reference.connection}</span>
-                <Button as="a" href={reference.linkedin}>
-                  LinkedIn
-                </Button>
-              </div>
-            ))}
-          </div>
+        <h2>
+          <u>Colleagues</u> that could tell you more about my work.
+        </h2>
+        <p>Feel free to contact them but don't spam 🙃</p>
+        <div className={classes.References}>
+          {references.map(reference => (
+            <div className={classes.Reference}>
+              {renderImage(reference)}
+              <p>{reference.name}</p>
+              <span>{reference.connection}</span>
+              <Button as="a" href={reference.linkedin}>
+                LinkedIn
+              </Button>
+            </div>
+          ))}
         </div>
       </Animation>
     </Section>

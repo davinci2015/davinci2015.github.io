@@ -97,7 +97,7 @@ export const Blog = ({ maxArticlesToShow, title }: Props) => {
     <Animation type="fadeUp" delay={300}>
       <Section anchor="blog">
         <div className={classes.Blog}>
-          {title && <h1 className={classes.Title}>{title}</h1>}
+          {title && <h2 className={classes.Title}>{title}</h2>}
           <div className={classes.Articles}>
             {[...articles, ...externalArticles]
               .slice(0, maxArticlesToShow)

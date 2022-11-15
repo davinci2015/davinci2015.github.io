@@ -16,8 +16,8 @@ const IndexPage = () => (
         <CalendlyButton text="Don't be a stranger — let's talk ☕" />
       </div>
     </Animation>
+    <Blog title="Latest Articles" maxArticlesToShow={3} />
     <References />
-    <Blog title="Latest Articles" maxArticlesToShow={6} />
   </MainLayout>
 )
 
