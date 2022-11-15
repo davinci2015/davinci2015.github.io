@@ -17,7 +17,7 @@ const IndexPage = () => (
       </div>
     </Animation>
     <References />
-    <Blog />
+    <Blog maxArticlesToShow={6} />
   </MainLayout>
 )
 

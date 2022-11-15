@@ -73,7 +73,11 @@ const externalArticles = [
   },
 ]
 
-export const Blog = () => {
+type Props = {
+  maxArticlesToShow?: number
+}
+
+export const Blog = ({ maxArticlesToShow }) => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       allMdx {
@@ -102,29 +106,22 @@ export const Blog = () => {
         <div className={classes.Blog}>
           <h1 className={classes.Title}>Latest Articles</h1>
           <div className={classes.Articles}>
-            {articles.map(article => (
-              <div key={article.url}>
-                <ArticleCard
-                  slug={article.frontmatter.slug}
-                  image={article.frontmatter.image}
-                  title={article.frontmatter.title}
-                  date={article.frontmatter.date}
-                  readingTime={article.frontmatter.readingTime}
-                />
-              </div>
-            ))}
-
-            {externalArticles.map(article => (
-              <div key={article.url}>
-                <ArticleCard
-                  url={article.url}
-                  image={article.image}
-                  title={article.title}
-                  date={article.date}
-                  readingTime={article.readingTime}
-                />
-              </div>
-            ))}
+            {[...articles, ...externalArticles]
+              .slice(0, maxArticlesToShow)
+              .map(article => (
+                <div key={article.url}>
+                  <ArticleCard
+                    slug={article.frontmatter?.slug}
+                    url={article.url}
+                    image={article.frontmatter?.image || article.image}
+                    title={article.frontmatter?.title || article.title}
+                    date={article.frontmatter?.date || article.date}
+                    readingTime={
+                      article.frontmatter?.readingTime || article.readingTime
+                    }
+                  />
+                </div>
+              ))}
           </div>
         </div>
       </Section>
