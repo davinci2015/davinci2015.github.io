@@ -20,19 +20,21 @@
 }
 
 .Reference {
+  position: relative;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 
   border: 2px dashed white;
   border-radius: var(--border-radius);
 
-  transition: border 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
 }
 
 .Reference:hover {
-  border: 2px dashed var(--secondary-color);
+  transform: scale(1.03);
 }
 
 .Reference p {

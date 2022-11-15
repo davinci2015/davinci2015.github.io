@@ -1,9 +1,10 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
-import { Animation, Button, Section } from "../../components"
+import { Animation, Button, Section, CalendlyButton } from "../../components"
 
 import * as classes from "./style.module.css"
+import arrow from "../../images/dotted-arrow.svg"
 
 export const Hero = () => (
   <Section anchor="hero">
@@ -37,6 +38,12 @@ export const Hero = () => (
             </Button>
           </div>
         </div>
+      </div>
+    </Animation>
+    <Animation type="fadeUp" delay={300}>
+      <div className={classes.Calendly}>
+        <img src={arrow} alt="arrow" />
+        <CalendlyButton text="Don't be a stranger — let's talk ☕" />
       </div>
     </Animation>
   </Section>
