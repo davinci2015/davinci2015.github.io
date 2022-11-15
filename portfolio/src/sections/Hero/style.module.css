@@ -9,6 +9,7 @@
   height: 140px;
   border: 2px dashed white;
   margin-bottom: 2rem;
+  flex-shrink: 0;
 }
 
 .Hero {

@@ -1,12 +1,12 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Animation, Logo, Button } from ".."
+import { Logo, Button } from ".."
 
 import * as classes from "./style.module.css"
 
 export const Header = () => (
   <header className={classes.Header}>
-    <Animation className={classes.ContentWrapper} type="fadeDown">
+    <div className={classes.ContentWrapper}>
       <Link to="/" aria-label="home">
         <Logo />
       </Link>
@@ -26,6 +26,6 @@ export const Header = () => (
           Resume
         </Button>
       </nav>
-    </Animation>
+    </div>
   </header>
 )
