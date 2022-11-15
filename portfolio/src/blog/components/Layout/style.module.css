@@ -1,0 +1,65 @@
+.Layout {
+  width: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  max-width: var(--page-width);
+}
+
+.Blog {
+  margin: 4rem auto;
+  max-width: 70%;
+  font-family: "Lora", serif;
+}
+
+.Blog p,
+.Blog li,
+.Blog a {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+.Blog li {
+  margin: 0.5rem 0;
+}
+
+.Blog h1 {
+  margin-bottom: 2rem;
+}
+
+.Blog a {
+  position: relative;
+  color: var(--text-color);
+  font-style: italic;
+}
+
+.Blog a:after {
+  content: "";
+  position: absolute;
+  width: 30%;
+  height: 1px;
+  background: white;
+  bottom: 0;
+  left: 0;
+  transition: width 250ms ease-in-out;
+}
+
+.Blog a:hover:after {
+  width: 100%;
+}
+
+.Blog em {
+}
+
+.Blog code {
+  padding: 2px 4px;
+  background-color: #1e1e1e;
+}
+
+@media (min-width: 768px) {
+  .Blog p,
+  .Blog li,
+  .Blog a {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+}

@@ -1,4 +1,5 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 
 import { Animation, ArticleCard, Section } from "../../components"
 
@@ -72,25 +73,59 @@ const externalArticles = [
   },
 ]
 
-export const Blog = () => (
-  <Animation type="fadeUp" delay={300}>
-    <Section anchor="blog">
-      <div className={classes.Blog}>
-        <h1 className={classes.Title}>Latest Articles</h1>
-        <div className={classes.Articles}>
-          {externalArticles.map(article => (
-            <div key={article.url}>
-              <ArticleCard
-                url={article.url}
-                image={article.image}
-                title={article.title}
-                date={article.date}
-                readingTime={article.readingTime}
-              />
-            </div>
-          ))}
+type Props = {
+  title?: string
+  maxArticlesToShow?: number
+}
+
+export const Blog = ({ maxArticlesToShow, title }: Props) => {
+  const data = useStaticQuery(graphql`
+    query MyQuery {
+      allMdx {
+        nodes {
+          frontmatter {
+            title
+            image {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            slug
+            readingTime
+            date
+          }
+        }
+      }
+    }
+  `)
+
+  const articles = data.allMdx.nodes
+
+  return (
+    <Animation type="fadeUp" delay={300}>
+      <Section anchor="blog">
+        <div className={classes.Blog}>
+          {title && <h1 className={classes.Title}>{title}</h1>}
+          <div className={classes.Articles}>
+            {[...articles, ...externalArticles]
+              .slice(0, maxArticlesToShow)
+              .map(article => (
+                <div key={article.url}>
+                  <ArticleCard
+                    slug={article.frontmatter?.slug}
+                    url={article.url}
+                    image={article.frontmatter?.image || article.image}
+                    title={article.frontmatter?.title || article.title}
+                    date={article.frontmatter?.date || article.date}
+                    readingTime={
+                      article.frontmatter?.readingTime || article.readingTime
+                    }
+                  />
+                </div>
+              ))}
+          </div>
         </div>
-      </div>
-    </Section>
-  </Animation>
-)
+      </Section>
+    </Animation>
+  )
+}

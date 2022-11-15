@@ -1,16 +1,14 @@
 import React from "react"
 
-import { Header } from ".."
-import { Footer } from "../../sections"
+import { Header } from "../../components"
 
 import * as classes from "./style.module.css"
 
-const Layout = ({ children }) => (
+const MainLayout = ({ children }) => (
   <div className={classes.Layout}>
     <Header />
     <main>{children}</main>
-    <Footer />
   </div>
 )
 
-export default Layout
+export default MainLayout
