@@ -1,15 +1,19 @@
 import React from "react"
+import { StaticImage } from "gatsby-plugin-image"
 
 import { Animation, Button, Section } from "../../components"
 
 import * as classes from "./style.module.css"
-import profile from "../../images/profile.jpg"
 
 export const Hero = () => (
   <Section anchor="hero">
     <Animation type="fadeUp" delay={300}>
       <div className={classes.Container}>
-        <img className={classes.ProfileImage} src={profile} alt="profile" />
+        <StaticImage
+          className={classes.ProfileImage}
+          src="../../images/profile.jpg"
+          alt="Danijel Vincijanović"
+        />
         <div className={classes.Hero}>
           <div className={classes.Intro}>
             <span className={classes.ImagePrefix}>Hey there 👋</span>
@@ -30,12 +34,6 @@ export const Hero = () => (
             </Button>
             <Button as="a" href="https://codepen.io/davinci">
               Codepen
-            </Button>
-            <Button as="a" href="https://medium.com/@danijel.vincijanovic">
-              Medium
-            </Button>
-            <Button as="a" href="https://dev.to/davinc">
-              Dev.to
             </Button>
           </div>
         </div>
