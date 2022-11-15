@@ -12,9 +12,10 @@
 }
 
 .Blog p,
-.Blog li {
-  font-size: 1.2rem;
-  line-height: 2rem;
+.Blog li,
+.Blog a {
+  font-size: 1rem;
+  line-height: 1.75rem;
 }
 
 .Blog li {
@@ -52,4 +53,13 @@
 .Blog code {
   padding: 2px 4px;
   background-color: #1e1e1e;
+}
+
+@media (min-width: 768px) {
+  .Blog p,
+  .Blog li,
+  .Blog a {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
 }
