@@ -4,28 +4,28 @@ import { Animation, Logo, Button } from ".."
 
 import * as classes from "./style.module.css"
 
-export function Header(): React.ReactElement {
-  const navigationItems = (
-    <>
-      <Link to="/blog">Blog</Link>
-      <Button
-        as="a"
-        href="../../Resume.pdf"
-        download="danijel_vincijanovic.pdf"
-      >
-        Resume
-      </Button>
-    </>
-  )
-
-  return (
-    <header className={classes.Header}>
-      <Animation className={classes.ContentWrapper} type="fadeDown">
-        <Link to="/" aria-label="home">
-          <Logo />
+export const Header = () => (
+  <header className={classes.Header}>
+    <Animation className={classes.ContentWrapper} type="fadeDown">
+      <Link to="/" aria-label="home">
+        <Logo />
+      </Link>
+      <nav className={classes.TopNavigationBar}>
+        <Link
+          to="/blog"
+          className={classes.NavLink}
+          activeClassName={classes.NavLinkActive}
+        >
+          Blog
         </Link>
-        <nav className={classes.TopNavigationBar}>{navigationItems}</nav>
-      </Animation>
-    </header>
-  )
-}
+        <Button
+          as="a"
+          href="../../Resume.pdf"
+          download="danijel_vincijanovic.pdf"
+        >
+          Resume
+        </Button>
+      </nav>
+    </Animation>
+  </header>
+)
