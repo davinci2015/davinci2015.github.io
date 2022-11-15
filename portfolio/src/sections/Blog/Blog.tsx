@@ -74,10 +74,11 @@ const externalArticles = [
 ]
 
 type Props = {
+  title?: string
   maxArticlesToShow?: number
 }
 
-export const Blog = ({ maxArticlesToShow }) => {
+export const Blog = ({ maxArticlesToShow, title }: Props) => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       allMdx {
@@ -104,7 +105,7 @@ export const Blog = ({ maxArticlesToShow }) => {
     <Animation type="fadeUp" delay={300}>
       <Section anchor="blog">
         <div className={classes.Blog}>
-          <h1 className={classes.Title}>Latest Articles</h1>
+          {title && <h1 className={classes.Title}>{title}</h1>}
           <div className={classes.Articles}>
             {[...articles, ...externalArticles]
               .slice(0, maxArticlesToShow)

@@ -7,6 +7,7 @@ import * as classes from "./style.module.css"
 export function Header(): React.ReactElement {
   const navigationItems = (
     <>
+      <Link to="/blog">Blog</Link>
       <Button
         as="a"
         href="../../Resume.pdf"
