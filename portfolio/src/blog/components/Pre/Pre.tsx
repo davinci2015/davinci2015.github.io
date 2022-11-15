@@ -22,20 +22,18 @@ export const Pre = (props: any) => {
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={`${className} ${classes.Pre}`} style={style}>
-          {tokens
-            .filter((token: any) => !(token.length === 1 && token[0].empty))
-            .map((line, i) => (
-              <div {...getLineProps({ line, key: i })} className={classes.Line}>
-                <span className={classes.LineNumber}>{i + 1}</span>
-                <span className={classes.LineContent}>
-                  {line.map((token, key) => (
-                    <Fragment key={key}>
-                      <span {...getTokenProps({ token, key })} />
-                    </Fragment>
-                  ))}
-                </span>
-              </div>
-            ))}
+          {tokens.slice(0, -1).map((line, i) => (
+            <div {...getLineProps({ line, key: i })} className={classes.Line}>
+              <span className={classes.LineNumber}>{i + 1}</span>
+              <span className={classes.LineContent}>
+                {line.map((token, key) => (
+                  <Fragment key={key}>
+                    <span {...getTokenProps({ token, key })} />
+                  </Fragment>
+                ))}
+              </span>
+            </div>
+          ))}
         </pre>
       )}
     </Highlight>
