@@ -1,0 +1,12 @@
+.Container {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.Caption {
+  margin: 0 auto;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--subtext-color);
+}

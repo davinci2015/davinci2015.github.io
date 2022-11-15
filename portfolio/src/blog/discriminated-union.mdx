@@ -9,17 +9,18 @@ date: 10 Nov 2022
 # Better React Prop Types with Discriminated Union
 
 ![Coding](./images/coding.jpeg)
-_Photo by Mohammad Rahmani on Unsplash_
+
+<PhotoCaption>Photo by Mohammad Rahmani on Unsplash</PhotoCaption>
 
 For a well-described API endpoint, we don't need to go to the implementation level to understand which parameters to provide.
 The endpoint documentation should explain everything.
 The same applies to React components.
 Developers should know how to use components without checking implementation details.
 
-When designing a React component, think about how other developers will use the component.
+When designing a _React_ component, think about how other developers will use the component.
 This is especially important for design system components that are used across the whole system.
 
-Imagine that we have a Button component that looks like this.
+Imagine that we have a `Button` component that looks like this.
 The component will render either `<button>` or `<a>` element, depending on the props provided.
 
 ```ts
@@ -102,14 +103,14 @@ We constructed component Props by using a discriminated union type of `AnchorPro
 type Props = AnchorProps | ButtonProps
 ```
 
-A switch case is used to narrow down the type. For anchor kind, Typescript will realize that the props object has additional two fields: `href` and `target` .
-Same for button, after type narrowing, Typescript will know that `onClick` is inside the props object.
-The default case should never happen and Typescript will warn us about that.
+A switch case is used to narrow down the type. For anchor kind, _Typescript_ will realize that the props object has additional two fields: `href` and `target` .
+Same for button, after type narrowing, _Typescript_ will know that `onClick` is inside the props object.
+The default case should never happen and _Typescript_ will warn us about that.
 
 Now other developers will know exactly how to use the component without looking at the implementation level.
 Here you can learn more about discriminated unions:
 
-- Discriminated unions in official Typescript documentation
-- Demystifying TypeScript Discriminated Unions
+- [Discriminated unions in official Typescript documentation](https://medium.com/r?url=https%3A%2F%2Fwww.typescriptlang.org%2Fdocs%2Fhandbook%2F2%2Fnarrowing.html%23discriminated-unions)
+- [Demystifying TypeScript Discriminated Unions](https://medium.com/r?url=https%3A%2F%2Fcss-tricks.com%2Ftypescript-discriminated-unions%2F)
 
 Until next time 👋

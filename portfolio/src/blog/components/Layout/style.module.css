@@ -24,3 +24,27 @@
 .Blog h1 {
   margin-bottom: 2rem;
 }
+
+.Blog a {
+  position: relative;
+  color: var(--text-color);
+  font-style: italic;
+}
+
+.Blog a:after {
+  content: "";
+  position: absolute;
+  width: 30%;
+  height: 1px;
+  background: white;
+  bottom: 0;
+  left: 0;
+  transition: width 250ms ease-in-out;
+}
+
+.Blog a:hover:after {
+  width: 100%;
+}
+
+.Blog em {
+}
