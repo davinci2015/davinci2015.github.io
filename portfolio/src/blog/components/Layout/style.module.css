@@ -8,4 +8,19 @@
 .Blog {
   margin: 4rem auto;
   max-width: 70%;
+  font-family: "Lora", serif;
+}
+
+.Blog p,
+.Blog li {
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+.Blog li {
+  margin: 0.5rem 0;
+}
+
+.Blog h1 {
+  margin-bottom: 2rem;
 }

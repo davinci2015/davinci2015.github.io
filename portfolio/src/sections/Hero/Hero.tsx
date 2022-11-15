@@ -14,9 +14,9 @@ export const Hero = () => (
           <div className={classes.Intro}>
             <span className={classes.ImagePrefix}>Hey there 👋</span>
           </div>
-          <h1 className={classes.Title}>
+          <h2 className={classes.Title}>
             I'm <u>Danijel</u> Vincijanović.
-          </h1>
+          </h2>
           <h2 className={classes.Subtitle}>
             I code and help teams and products grow. Like a gardener.
           </h2>

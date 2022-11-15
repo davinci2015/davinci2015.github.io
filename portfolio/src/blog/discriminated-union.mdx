@@ -64,7 +64,7 @@ We know that Button component should receive different props depending if we wan
 Therefore, we will have a different data structure for the button than for an anchor element.
 
 In order to distinguish these two data structures, we will introduce a discriminant property called kind .
-This is a property that can be either "anchor" or "button" .
+This is a property that can be either `"anchor"` or `"button"` .
 
 ```ts
 type AnchorProps = {
@@ -96,14 +96,14 @@ const Button = (props: Props) => {
 }
 ```
 
-We constructed component Props by using a discriminated union type of AnchorProps and ButtonProps .
+We constructed component Props by using a discriminated union type of `AnchorProps` and `ButtonProps` .
 
 ```ts
 type Props = AnchorProps | ButtonProps
 ```
 
-A switch case is used to narrow down the type. For anchor kind, Typescript will realize that the props object has additional two fields: href and target .
-Same for button, after type narrowing, Typescript will know that onClick is inside the props object.
+A switch case is used to narrow down the type. For anchor kind, Typescript will realize that the props object has additional two fields: `href` and `target` .
+Same for button, after type narrowing, Typescript will know that `onClick` is inside the props object.
 The default case should never happen and Typescript will warn us about that.
 
 Now other developers will know exactly how to use the component without looking at the implementation level.
