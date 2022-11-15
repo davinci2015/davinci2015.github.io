@@ -2,7 +2,7 @@ import React from "react"
 import { MDXProvider } from "@mdx-js/react"
 
 import * as classes from "./style.module.css"
-import { Pre, PhotoCaption } from ".."
+import { Pre, PhotoCaption, Intro } from ".."
 import { Header } from "../../../components"
 
 const Layout = ({ children }) => (
@@ -10,6 +10,7 @@ const Layout = ({ children }) => (
     components={{
       pre: Pre,
       PhotoCaption,
+      Intro,
     }}
   >
     <div className={classes.Layout}>
