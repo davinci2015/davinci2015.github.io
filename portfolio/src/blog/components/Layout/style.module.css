@@ -30,21 +30,27 @@
   position: relative;
   color: var(--text-color);
   font-style: italic;
+  transition: color 150ms ease-in-out;
 }
 
-.Blog a:after {
+.Blog a:before {
   content: "";
   position: absolute;
   width: 30%;
   height: 1px;
-  background: white;
+  background: var(--text-color);
   bottom: 0;
   left: 0;
-  transition: width 250ms ease-in-out;
+  transition: width 250ms ease-in-out, color 150ms ease-in-out;
 }
 
-.Blog a:hover:after {
+.Blog a:hover {
+  color: var(--secondary-color);
+}
+
+.Blog a:hover:before {
   width: 100%;
+  background: var(--secondary-color);
 }
 
 .Blog em {

@@ -52,6 +52,7 @@ export const ArticleCard = ({
             <img className={classes.Image} src={image} alt={title} />
           ) : (
             <GatsbyImage
+              className={classes.Image}
               image={getImage(image) as IGatsbyImageData}
               alt={title}
             />

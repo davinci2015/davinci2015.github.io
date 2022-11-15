@@ -5,3 +5,7 @@
 .Container h1 {
   margin-bottom: 1rem;
 }
+
+.Container .Back {
+  font-size: 1rem;
+}

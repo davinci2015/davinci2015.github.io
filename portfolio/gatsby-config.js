@@ -44,6 +44,7 @@ module.exports = {
       options: {
         extensions: [".mdx"],
         gatsbyRemarkPlugins: [
+          "gatsby-remark-gifs",
           {
             resolve: `gatsby-remark-images`,
             options: {

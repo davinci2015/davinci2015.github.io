@@ -72,12 +72,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  outline: 0;
-}
-
+a:hover,
 a:focus {
-  outline-color: var(--subtext-color);
-  outline-style: dotted;
-  outline-width: 2px;
+  outline: 0;
 }
