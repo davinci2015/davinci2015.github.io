@@ -8,13 +8,13 @@ import { Header } from "../../../components"
 const Layout = ({ children }) => (
   <MDXProvider
     components={{
-      h1: props => <h1 {...props} style={{ color: "red" }} />,
       pre: Pre,
+      code: props => <code {...props} style={{ backgroundColor: "gray" }} />,
     }}
   >
     <div className={classes.Layout}>
       <Header />
-      <main>{children}</main>
+      <main className={classes.Blog}>{children}</main>
     </div>
   </MDXProvider>
 )

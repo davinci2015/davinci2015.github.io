@@ -4,3 +4,8 @@
   margin: 0 auto;
   max-width: var(--page-width);
 }
+
+.Blog {
+  margin: 4rem auto;
+  max-width: 70%;
+}

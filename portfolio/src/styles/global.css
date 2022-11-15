@@ -24,8 +24,8 @@ body {
 
 h1 {
   font-weight: 700;
-  font-size: 1.75rem;
-  line-height: 1.5rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
   color: var(--primary-color);
   margin: 1rem 0;
 }
