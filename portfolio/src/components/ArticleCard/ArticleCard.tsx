@@ -1,9 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
+import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
 
 import { routes } from "../../routes/routes"
 
 import * as classes from "./style.module.css"
+import { formatDate } from "../../utils/utils"
 
 const DynamicLink = (props: {
   url?: string
@@ -29,7 +31,7 @@ type Props = {
   title: string
   date: string
   readingTime: string
-  image: string
+  image: string | IGatsbyImageData
   url?: string
   slug?: string
 }
@@ -46,14 +48,21 @@ export const ArticleCard = ({
     <article className={classes.Article}>
       {image && (
         <picture className={classes.ImageWrapper}>
-          <img className={classes.Image} src={image} alt={title} />
+          {typeof image === "string" ? (
+            <img className={classes.Image} src={image} alt={title} />
+          ) : (
+            <GatsbyImage
+              image={getImage(image) as IGatsbyImageData}
+              alt={title}
+            />
+          )}
         </picture>
       )}
       <div className={classes.Description}>
         <h4>{title}</h4>
         <div>
           <p>
-            {date} - <span>{readingTime} min read</span>
+            {formatDate(date)} - <span>{readingTime} min read</span>
           </p>
         </div>
       </div>

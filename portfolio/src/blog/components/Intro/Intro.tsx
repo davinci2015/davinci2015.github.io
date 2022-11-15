@@ -1,6 +1,7 @@
 import React from "react"
 
 import * as classes from "./style.module.css"
+import { formatDate } from "../../../utils/utils"
 
 type Props = {
   title: string
@@ -12,12 +13,7 @@ export const Intro = ({ title, readingTime, date }: Props) => (
   <div className={classes.Container}>
     <h1>{title}</h1>
     <span>
-      {new Date(date).toLocaleDateString("en-US", {
-        day: "numeric",
-        year: "numeric",
-        month: "long",
-      })}{" "}
-      — {readingTime} min read
+      {formatDate(date)} — {readingTime} min read
     </span>
   </div>
 )
