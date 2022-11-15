@@ -114,10 +114,11 @@ type Props = AnchorProps | ButtonProps
 ```
 
 A switch case is used to narrow down the type. For anchor kind, _Typescript_ will realize that the props object has additional two fields: `href` and `target` .
-Same for button, after type narrowing, _Typescript_ will know that `onClick` is inside the props object.
+Same for the button, after type narrowing, _Typescript_ will know that `onClick` is inside the props object.
 The default case should never happen and _Typescript_ will warn us about that.
 
 Now other developers will know exactly how to use the component without looking at the implementation level.
+
 Here you can learn more about discriminated unions:
 
 - [Discriminated unions in official Typescript documentation](https://medium.com/r?url=https%3A%2F%2Fwww.typescriptlang.org%2Fdocs%2Fhandbook%2F2%2Fnarrowing.html%23discriminated-unions)
