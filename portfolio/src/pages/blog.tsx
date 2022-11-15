@@ -1,8 +1,9 @@
 import * as React from "react"
 
-import { Layout, Seo } from "../components"
+import { Seo } from "../components"
+import { MainLayout } from "../layout"
 
-const BlogPage = () => <Layout>I'm blog page</Layout>
+const BlogPage = () => <MainLayout>I'm blog page</MainLayout>
 
 export const Head = () => <Seo title="Blog" />
 

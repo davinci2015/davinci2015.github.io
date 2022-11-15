@@ -1,0 +1,26 @@
+.Layout {
+  width: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  max-width: var(--page-width);
+}
+
+.Pre {
+  padding: 0.5rem;
+}
+
+.Line {
+  display: table-row;
+}
+
+.LineContent {
+  display: table-cell;
+}
+
+.LineNumber {
+  display: table-cell;
+  text-align: right;
+  padding-right: 1em;
+  user-select: none;
+  opacity: 0.5;
+}

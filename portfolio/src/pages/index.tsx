@@ -1,14 +1,14 @@
 import * as React from "react"
-import { PopupButton } from "react-calendly"
 
-import { Animation, CalendlyButton, Layout, Seo } from "../components"
+import { Animation, CalendlyButton, Seo } from "../components"
+import { MainLayout } from "../layout"
 import { Blog, Hero, References } from "../sections"
 
 import * as classes from "./index.module.css"
 import arrow from "../images/curly-dotted-arrow-svgrepo-com.svg"
 
 const IndexPage = () => (
-  <Layout>
+  <MainLayout>
     <Hero />
     <Animation type="fadeUp" delay={300}>
       <div className={classes.Calendly}>
@@ -18,7 +18,7 @@ const IndexPage = () => (
     </Animation>
     <References />
     <Blog />
-  </Layout>
+  </MainLayout>
 )
 
 export const Head = () => <Seo title="Home" />

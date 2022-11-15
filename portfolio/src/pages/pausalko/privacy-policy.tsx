@@ -1,8 +1,9 @@
 import React from "react"
-import { Layout, Seo } from "../../components"
+import { Seo } from "../../components"
+import { MainLayout } from "../../layout"
 
 const PrivacyPolicy = () => (
-  <Layout>
+  <MainLayout>
     <div className="wrapper">
       <h1>Paušalac - Privacy Policy</h1>
       <p>
@@ -37,7 +38,7 @@ const PrivacyPolicy = () => (
       </p>
       <p>Izrađeno sa ❤️.</p>
     </div>
-  </Layout>
+  </MainLayout>
 )
 
 export const Head = () => <Seo title="Paušalac - Privacy Policy" />
