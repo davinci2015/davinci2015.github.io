@@ -1,15 +1,17 @@
 import React from "react"
 import { MDXProvider } from "@mdx-js/react"
 
-import * as classes from "./style.module.css"
-import { Pre, PhotoCaption, Intro } from ".."
+import { Pre, PhotoCaption, Quote, Intro } from ".."
 import { Header } from "../../../components"
+
+import * as classes from "./style.module.css"
 
 const Layout = ({ children }) => (
   <MDXProvider
     components={{
       pre: Pre,
       PhotoCaption,
+      Quote,
       Intro,
     }}
   >

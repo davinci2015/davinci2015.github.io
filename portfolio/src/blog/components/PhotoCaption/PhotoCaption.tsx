@@ -6,8 +6,8 @@ type Props = {
   children: React.ReactElement
 }
 
-export const PhotoCaption = (props: any) => (
+export const PhotoCaption = ({ children }: Props) => (
   <div className={classes.Container}>
-    <em className={classes.Caption}>{props.children}</em>
+    <em className={classes.Caption}>{children}</em>
   </div>
 )

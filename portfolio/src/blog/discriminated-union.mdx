@@ -62,8 +62,14 @@ That will result in a bad developer experience.
 
 Luckily, we can improve prop types by using a discriminated union so that other developers know exactly how to use the component.
 
-A discriminated union is a union data structure that holds various objects, with one of the objects identified directly by a discriminant.
-The discriminant is the first item to be serialized or deserialized - Discriminated Unions IBM
+<Quote
+  source=" Discriminated Unions IBM"
+  sourceUrl="https://www.ibm.com/docs/hr/aix/7.2?topic=types-discriminated-unions"
+>
+  A discriminated union is **a union data structure that holds various
+  objects**, with one of the objects **identified directly by a discriminant**.
+  The discriminant is the first item to be serialized or deserialized
+</Quote>
 
 We know that Button component should receive different props depending if we want to render `<button>` or `<a>` element.
 Therefore, we will have a different data structure for the button than for an anchor element.
