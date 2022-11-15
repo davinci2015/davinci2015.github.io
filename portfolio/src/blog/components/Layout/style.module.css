@@ -48,3 +48,8 @@
 
 .Blog em {
 }
+
+.Blog code {
+  padding: 2px 4px;
+  background-color: #1e1e1e;
+}
