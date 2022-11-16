@@ -101,6 +101,17 @@ export const Blog = ({ maxArticlesToShow, title }: Props) => {
           <div className={classes.Articles}>
             {[...articles, ...externalArticles]
               .slice(0, maxArticlesToShow)
+              .sort((a, b) => {
+                const firstDate = new Date(
+                  a.frontmatter?.date || a.date
+                ).valueOf()
+
+                const secondDate = new Date(
+                  b.frontmatter?.date || b.date
+                ).valueOf()
+
+                return secondDate - firstDate
+              })
               .map(article => (
                 <div key={article.url || article.frontmatter?.slug}>
                   <ArticleCard
