@@ -1,5 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import shuffle from "lodash.shuffle"
 
 import { Animation, ArticleCard, Section } from "../../components"
 
@@ -68,9 +69,16 @@ const externalArticles = [
 type Props = {
   title?: string
   maxArticlesToShow?: number
+  shuffleArticles?: boolean
+  blacklistedSlugs?: string[]
 }
 
-export const Blog = ({ maxArticlesToShow, title }: Props) => {
+export const Blog = ({
+  title,
+  maxArticlesToShow,
+  blacklistedSlugs = [],
+  shuffleArticles,
+}: Props) => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       allMdx {
@@ -92,6 +100,22 @@ export const Blog = ({ maxArticlesToShow, title }: Props) => {
   `)
 
   const articles = data.allMdx.nodes
+  const allArticles = [
+    ...articles.filter(
+      article => !blacklistedSlugs.includes(article.frontmatter.slug)
+    ),
+    ...externalArticles,
+  ]
+
+  const articlesToRender = (
+    shuffleArticles ? shuffle(allArticles) : allArticles
+  )
+    .slice(0, maxArticlesToShow)
+    .sort((a, b) => {
+      const firstDate = new Date(a.frontmatter?.date || a.date).valueOf()
+      const secondDate = new Date(b.frontmatter?.date || b.date).valueOf()
+      return secondDate - firstDate
+    })
 
   return (
     <Animation type="fadeUp" delay={300}>
@@ -99,33 +123,20 @@ export const Blog = ({ maxArticlesToShow, title }: Props) => {
         <div className={classes.Blog}>
           {title && <h2 className={classes.Title}>{title}</h2>}
           <div className={classes.Articles}>
-            {[...articles, ...externalArticles]
-              .slice(0, maxArticlesToShow)
-              .sort((a, b) => {
-                const firstDate = new Date(
-                  a.frontmatter?.date || a.date
-                ).valueOf()
-
-                const secondDate = new Date(
-                  b.frontmatter?.date || b.date
-                ).valueOf()
-
-                return secondDate - firstDate
-              })
-              .map(article => (
-                <div key={article.url || article.frontmatter?.slug}>
-                  <ArticleCard
-                    slug={article.frontmatter?.slug}
-                    url={article.url}
-                    image={article.frontmatter?.image || article.image}
-                    title={article.frontmatter?.title || article.title}
-                    date={article.frontmatter?.date || article.date}
-                    readingTime={
-                      article.frontmatter?.readingTime || article.readingTime
-                    }
-                  />
-                </div>
-              ))}
+            {articlesToRender.map(article => (
+              <div key={article.url || article.frontmatter?.slug}>
+                <ArticleCard
+                  slug={article.frontmatter?.slug}
+                  url={article.url}
+                  image={article.frontmatter?.image || article.image}
+                  title={article.frontmatter?.title || article.title}
+                  date={article.frontmatter?.date || article.date}
+                  readingTime={
+                    article.frontmatter?.readingTime || article.readingTime
+                  }
+                />
+              </div>
+            ))}
           </div>
         </div>
       </Section>

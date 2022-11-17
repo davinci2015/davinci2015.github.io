@@ -3,10 +3,15 @@ import { MDXProvider } from "@mdx-js/react"
 
 import { Pre, PhotoCaption, Quote, Intro } from ".."
 import { Header } from "../../../components"
+import { Blog } from "../../../sections"
 
 import * as classes from "./style.module.css"
 
-const Layout = ({ children }) => (
+type Props = {
+  children: React.ReactElement
+  pageContext: { slug: string }
+}
+const Layout = ({ children, pageContext }: Props) => (
   <MDXProvider
     components={{
       pre: Pre,
@@ -18,6 +23,12 @@ const Layout = ({ children }) => (
     <div className={classes.Layout}>
       <Header />
       <main className={classes.Blog}>{children}</main>
+      <Blog
+        title="Interesting read? Check these out."
+        maxArticlesToShow={3}
+        blacklistedSlugs={[pageContext.slug]}
+        shuffleArticles
+      />
     </div>
   </MDXProvider>
 )

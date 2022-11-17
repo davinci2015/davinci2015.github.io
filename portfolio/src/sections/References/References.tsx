@@ -99,7 +99,7 @@ export const References = () => {
         <p>Feel free to contact them but don't spam 🙃</p>
         <div className={classes.References}>
           {references.map(reference => (
-            <div className={classes.Reference}>
+            <div key={reference.name} className={classes.Reference}>
               {renderImage(reference)}
               <p>{reference.name}</p>
               <span>{reference.connection}</span>
