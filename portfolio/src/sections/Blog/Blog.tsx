@@ -8,14 +8,6 @@ import * as classes from "./style.module.css"
 
 const externalArticles = [
   {
-    url: "https://dev.to/cobe_tech/is-this-1-000-00-worth-node-script-548l",
-    image:
-      "https://res.cloudinary.com/practicaldev/image/fetch/s--Lvl1ZNKy--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1ph7yc1i1vqqgwpxegw5.png",
-    title: "Is this a €1.000,00 worth Node script?",
-    date: "Aug 29, 2019",
-    readingTime: "5",
-  },
-  {
     url: "https://medium.com/cobe-mobile/santa-react-patterns-giveaway-4th-week-f9e6a9b03140",
     image: "https://miro.medium.com/max/1400/1*jOt_9V1NNccwQcdt-3D6ig.webp",
     title: "Santa React patterns giveaway — 4th week",

@@ -1,0 +1,55 @@
+---
+title: Is this a €1.000,00 worth Node script?
+slug: /node-subscription-script
+image: ./images/node-script/node.png
+readingTime: 4
+date: 08/29/2019
+---
+
+<Intro
+  title={props.pageContext.frontmatter.title}
+  readingTime={props.pageContext.frontmatter.readingTime}
+  date={props.pageContext.frontmatter.date}
+/>
+
+![Coding](./images/node-script/node.png)
+
+So the story begins with one of my favourite [Youtube](https://www.youtube.com/user/viktorlantos) channels.
+A few days ago, they've published a new video announcing that they will soon reach their 100k subscriber and on that occasion will give out a **€1.000,00** voucher which the person can then spend on new equipment.
+That's a lot of money! Especially if you're, like me, living in Croatia.
+We're talking about approximate 20% more than an average monthly salary here.
+
+## Plot
+
+I must admit, after I heard the announcement I was immediately hooked. I paused the video and started thinking of ways to become that 100k subscriber and win the voucher. What I figured out next is that manually checking the number of subscribers and waiting for the right moment to hit the subscribe button won't bring me any luck. I needed a machine to do that work for me if I want to be faster than others.
+
+![Fast as machine](./images/node-script/fast-as-machine.gif)
+
+After a short brainstorming session I came up with an easy solution and the only thing I needed was [Youtube API](https://developers.google.com/youtube/v3) and a little bit of Node. Solution is pretty straightforward: we had to know how many subscribers the channel has so when it reaches its _99.999_ subscriber we would need to subscribe.
+
+## Challenges
+
+If you're already thinking about implementation then you know that we'll need `setInterval` or `setTimeout` so we can repeatedly check the number of subscribers.
+The only limitation we have here is YouTube Data [API quota](https://developers.google.com/youtube/v3/getting-started#quota) usage.
+We get default quota allocation of 10.000 units per day which means that each request will cost us some units.
+
+In our case, if we want to get a number of channel subscribers we need to do a request to `https://www.googleapis.com/youtube/v3/channels?part=statistics` and that request will cost us 3 units. You can calculate your quota cost using [Youtube Quota Calculator](https://developers.google.com/youtube/v3/determine_quota_cost).
+
+If we check the subscribers count every second we'll drain our quota by running our script for 55 minutes which is just not enough; we want our script to run longer so that we don't miss out on our chance. The only solution for this limitation is to use a different interval delay depending on the number of subscribers. That means that we'll perform requests more frequently as the number of subscribers approaches 100k. In the beginning we'll start with one request per hour and then we'll get all the way down to 300 milliseconds.
+
+## Solution
+
+Check the solution in this repo below 👇
+
+[Github repository](https://github.com/davinci2015/youtube-subscriber)
+
+## Twist
+
+After I've finished with the implementation, I continued watching the video where they announce bounty.
+In that moment I knew I messed up.
+It was never about being the 100Kth subscriber. It was about visiting their social profiles and participating in the prize game where the winner will be randomly chosen.
+
+So here I am, with a published script and without a €1.000,00 voucher.
+But let's look at the bright side - at least I've learned something new and maybe, in the future, the script will help someone actually win the voucher, who knows.
+
+Until then, happy coding! 👋
