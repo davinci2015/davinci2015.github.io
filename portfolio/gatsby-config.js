@@ -14,6 +14,7 @@ module.exports = {
     author: `Danijel Vincijanović`,
   },
   plugins: [
+    `gatsby-plugin-dts-css-modules`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
