@@ -6,6 +6,7 @@ import { Logo } from "./Logo/Logo"
 import { Section } from "./Section/Section"
 import { Button } from "./Button/Button"
 import { ArticleCard } from "./ArticleCard/ArticleCard"
+import { Layout } from "./Layout/Layout"
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   Button,
   ArticleCard,
   CalendlyButton,
+  Layout,
 }

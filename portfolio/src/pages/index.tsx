@@ -1,16 +1,14 @@
 import * as React from "react"
 
-import { Seo } from "../components"
-import { MainLayout } from "../layout"
+import { Seo, Layout } from "../components"
 import { Blog, Hero, References } from "../sections"
 
 const IndexPage = () => (
-  <MainLayout>
+  <Layout>
     <Hero />
-
     <Blog title="Latest Articles" maxArticlesToShow={3} />
     <References />
-  </MainLayout>
+  </Layout>
 )
 
 export const Head = () => <Seo title="Home" />

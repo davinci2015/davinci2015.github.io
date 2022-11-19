@@ -1,10 +1,9 @@
 import React from "react"
 
-import { Seo } from "../../components"
-import { MainLayout } from "../../layout"
+import { Seo, Layout } from "../../components"
 
 const PrivacyPolicy = () => (
-  <MainLayout>
+  <Layout>
     <h1>Tank Check - Privacy Policy</h1>
     <p>
       Danijel Vincijanović built the Tank Check app as a Free app. This SERVICE
@@ -117,7 +116,7 @@ const PrivacyPolicy = () => (
       If you have any questions or suggestions about my Privacy Policy, do not
       hesitate to contact me at danijel.vincijanovic@gmail.com.
     </p>
-  </MainLayout>
+  </Layout>
 )
 
 export const Head = () => <Seo title="Tank Check - Privacy Policy" />
