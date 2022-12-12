@@ -102,12 +102,12 @@ export const Blog = ({
   const articlesToRender = (
     shuffleArticles ? shuffle(allArticles) : allArticles
   )
-    .slice(0, maxArticlesToShow)
     .sort((a, b) => {
       const firstDate = new Date(a.frontmatter?.date || a.date).valueOf()
       const secondDate = new Date(b.frontmatter?.date || b.date).valueOf()
       return secondDate - firstDate
     })
+    .slice(0, maxArticlesToShow)
 
   return (
     <Animation type="fadeUp" delay={300}>
