@@ -58,6 +58,26 @@ const externalArticles = [
   },
 ]
 
+export const query = graphql`
+  query AllArticles {
+    allMdx {
+      nodes {
+        frontmatter {
+          title
+          image {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          slug
+          readingTime
+          date
+        }
+      }
+    }
+  }
+`
+
 type Props = {
   title?: string
   maxArticlesToShow?: number
@@ -71,25 +91,7 @@ export const Blog = ({
   blacklistedSlugs = [],
   shuffleArticles,
 }: Props) => {
-  const data = useStaticQuery(graphql`
-    query MyQuery {
-      allMdx {
-        nodes {
-          frontmatter {
-            title
-            image {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-            slug
-            readingTime
-            date
-          }
-        }
-      }
-    }
-  `)
+  const data = useStaticQuery(query)
 
   const articles = data.allMdx.nodes
   const allArticles = [
@@ -99,15 +101,19 @@ export const Blog = ({
     ...externalArticles,
   ]
 
-  const articlesToRender = (
-    shuffleArticles ? shuffle(allArticles) : allArticles
-  )
-    .sort((a, b) => {
-      const firstDate = new Date(a.frontmatter?.date || a.date).valueOf()
-      const secondDate = new Date(b.frontmatter?.date || b.date).valueOf()
-      return secondDate - firstDate
-    })
-    .slice(0, maxArticlesToShow)
+  const getArticlesToRender = allArticles => {
+    if (shuffleArticles) {
+      return shuffle(allArticles).slice(0, maxArticlesToShow)
+    }
+
+    return allArticles
+      .sort((a, b) => {
+        const firstDate = new Date(a.frontmatter?.date || a.date).valueOf()
+        const secondDate = new Date(b.frontmatter?.date || b.date).valueOf()
+        return secondDate - firstDate
+      })
+      .slice(0, maxArticlesToShow)
+  }
 
   return (
     <Animation type="fadeUp" delay={300}>
@@ -115,7 +121,7 @@ export const Blog = ({
         <div className={classes.Blog}>
           {title && <h2 className={classes.Title}>{title}</h2>}
           <div className={classes.Articles}>
-            {articlesToRender.map(article => (
+            {getArticlesToRender(allArticles).map(article => (
               <div key={article.url || article.frontmatter?.slug}>
                 <ArticleCard
                   slug={article.frontmatter?.slug}
