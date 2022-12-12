@@ -101,19 +101,15 @@ export const Blog = ({
     ...externalArticles,
   ]
 
-  const getArticlesToRender = allArticles => {
-    if (shuffleArticles) {
-      return shuffle(allArticles).slice(0, maxArticlesToShow)
-    }
-
-    return allArticles
-      .sort((a, b) => {
-        const firstDate = new Date(a.frontmatter?.date || a.date).valueOf()
-        const secondDate = new Date(b.frontmatter?.date || b.date).valueOf()
-        return secondDate - firstDate
-      })
-      .slice(0, maxArticlesToShow)
+  const sortArticles = (a, b) => {
+    const firstDate = new Date(a.frontmatter?.date || a.date).valueOf()
+    const secondDate = new Date(b.frontmatter?.date || b.date).valueOf()
+    return secondDate - firstDate
   }
+
+  const articlesToRender = shuffleArticles
+    ? shuffle(allArticles).slice(0, maxArticlesToShow).sort(sortArticles)
+    : allArticles.sort(sortArticles).slice(0, maxArticlesToShow)
 
   return (
     <Animation type="fadeUp" delay={300}>
@@ -121,7 +117,7 @@ export const Blog = ({
         <div className={classes.Blog}>
           {title && <h2 className={classes.Title}>{title}</h2>}
           <div className={classes.Articles}>
-            {getArticlesToRender(allArticles).map(article => (
+            {articlesToRender.map(article => (
               <div key={article.url || article.frontmatter?.slug}>
                 <ArticleCard
                   slug={article.frontmatter?.slug}
