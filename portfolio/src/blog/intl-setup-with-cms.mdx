@@ -1,0 +1,47 @@
+---
+title: I18n setup with Next.js and Headless CMS
+slug: /intl-setup-with-next-js
+image: ./images/galaxy.jpg
+readingTime: 8
+date: 12/20/2022
+---
+
+<Intro
+  title={props.pageContext.frontmatter.title}
+  readingTime={props.pageContext.frontmatter.readingTime}
+  date={props.pageContext.frontmatter.date}
+/>
+
+![Internationalization](./images/galaxy.jpg)
+
+<PhotoCaption>Photo by Greg Rakozy on Unsplash</PhotoCaption>
+
+_How are you?_
+Or should I say - _Wie geht es dir?_ 🇩🇪
+Or maybe - _Kako si?_ 🇭🇷
+
+I hope you are doing well and that you are ready to develop a website that supports multiple languages. Internationalization, or shortly i18n, is the process of designing a software that can be adapted to different language without engineering changes.
+
+In this article, we will go through the basic i18n setup with [Next.js](https://nextjs.org) and headless CMS.
+We will support three languages:
+
+- English (default)
+- German and
+- Croatian
+
+This setup is extendable to any number of languages and will work with any kind of headless CMS that you choose with some minor tweaks in the code.
+Here we will use [Prismic CMS](https://prismic.io).
+
+For setting up i18n on our website we will divide configuration into two parts:
+
+- **Internationalization routing** and content that will be changed often by content editors
+- **Component internationalization** for the content inside components that won't be changed that often by content editors
+
+## Internationalization routing
+
+<Quote>
+  Exporting static pages is not possible if you are using Internationalization
+  Routing ⚠️
+</Quote>
+
+## Component internationalization
