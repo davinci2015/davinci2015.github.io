@@ -4,6 +4,8 @@
 
   align-items: center;
   justify-content: center;
+
+  margin-top: 2rem;
 }
 
 .NotFound {
@@ -12,7 +14,17 @@
   animation: glitch 1s linear infinite;
 }
 
+@media (min-width: 992px) {
+  .NotFound {
+    font-size: 3rem;
+  }
+}
+
 @media (min-width: 1200px) {
+  .Container {
+    margin-top: 6rem;
+  }
+
   .NotFound {
     font-size: 4rem;
   }

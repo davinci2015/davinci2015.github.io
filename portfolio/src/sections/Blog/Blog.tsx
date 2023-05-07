@@ -58,6 +58,26 @@ const externalArticles = [
   },
 ]
 
+export const query = graphql`
+  query AllArticles {
+    allMdx {
+      nodes {
+        frontmatter {
+          title
+          image {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          slug
+          readingTime
+          date
+        }
+      }
+    }
+  }
+`
+
 type Props = {
   title?: string
   maxArticlesToShow?: number
@@ -71,25 +91,7 @@ export const Blog = ({
   blacklistedSlugs = [],
   shuffleArticles,
 }: Props) => {
-  const data = useStaticQuery(graphql`
-    query MyQuery {
-      allMdx {
-        nodes {
-          frontmatter {
-            title
-            image {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-            slug
-            readingTime
-            date
-          }
-        }
-      }
-    }
-  `)
+  const data = useStaticQuery(query)
 
   const articles = data.allMdx.nodes
   const allArticles = [
@@ -99,15 +101,15 @@ export const Blog = ({
     ...externalArticles,
   ]
 
-  const articlesToRender = (
-    shuffleArticles ? shuffle(allArticles) : allArticles
-  )
-    .slice(0, maxArticlesToShow)
-    .sort((a, b) => {
-      const firstDate = new Date(a.frontmatter?.date || a.date).valueOf()
-      const secondDate = new Date(b.frontmatter?.date || b.date).valueOf()
-      return secondDate - firstDate
-    })
+  const sortArticles = (a, b) => {
+    const firstDate = new Date(a.frontmatter?.date || a.date).valueOf()
+    const secondDate = new Date(b.frontmatter?.date || b.date).valueOf()
+    return secondDate - firstDate
+  }
+
+  const articlesToRender = shuffleArticles
+    ? shuffle(allArticles).slice(0, maxArticlesToShow).sort(sortArticles)
+    : allArticles.sort(sortArticles).slice(0, maxArticlesToShow)
 
   return (
     <Animation type="fadeUp" delay={300}>
