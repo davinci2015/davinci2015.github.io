@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Logo, Button } from ".."
+import { Logo, Button, CalendlyButton } from ".."
 
 import * as classes from "./style.module.css"
 
@@ -18,13 +18,14 @@ export const Header = () => (
         >
           Blog
         </Link>
-        <Button
-          as="a"
+        <a
+          className={classes.NavLink}
           href="../../Resume.pdf"
           download="danijel_vincijanovic.pdf"
         >
           Resume
-        </Button>
+        </a>
+        <CalendlyButton text="Contact" />
       </nav>
     </div>
   </header>

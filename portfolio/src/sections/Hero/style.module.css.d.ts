@@ -4,7 +4,6 @@ export const ProfileImage: string;
 export const Hero: string;
 export const Title: string;
 export const Subtitle: string;
-export const Tag: string;
 export const Intro: string;
 export const ImagePrefix: string;
 export const Image: string;

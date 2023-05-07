@@ -45,7 +45,7 @@
   width: 0%;
   bottom: -0.125rem;
   background-color: var(--secondary-color);
-  transition: 200ms ease-out;
+  transition: 200ms ease-in-out;
 }
 
 .TopNavigationBar .NavLinkActive,
@@ -63,6 +63,6 @@
 
 @media (min-width: 768px) {
   .TopNavigationBar a {
-    margin-right: 4rem;
+    margin-right: 3rem;
   }
 }
