@@ -1,7 +1,7 @@
 import React from "react"
 import { MDXProvider } from "@mdx-js/react"
 
-import { Pre, PhotoCaption, Quote, Intro } from ".."
+import * as components from ".."
 import { Header } from "../../../components"
 import { Blog } from "../../../sections"
 
@@ -14,10 +14,8 @@ type Props = {
 const Layout = ({ children, pageContext }: Props) => (
   <MDXProvider
     components={{
-      pre: Pre,
-      PhotoCaption,
-      Quote,
-      Intro,
+      ...components,
+      pre: components.Pre,
     }}
   >
     <div className={classes.Layout}>
