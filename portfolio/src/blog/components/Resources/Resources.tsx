@@ -1,7 +1,5 @@
 import React, { Fragment } from "react"
 
-import * as classes from "./style.module.css"
-
 type Props = {
   items: Array<{ title: string; url: string }>
   type?: "books" | "articles"
@@ -9,7 +7,8 @@ type Props = {
 
 export const Resources = ({ items, type = "books" }: Props) => (
   <Fragment>
-    <p className={classes.description}>📚 {type} to check</p>
+    {type === "books" && <h3>📚 Books to check</h3>}
+    {type === "articles" && <h3>📚 Articles to check</h3>}
 
     <ul>
       {items.map(item => (
