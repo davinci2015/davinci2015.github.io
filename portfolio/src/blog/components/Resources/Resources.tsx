@@ -8,7 +8,7 @@ type Props = {
 export const Resources = ({ items, type = "books" }: Props) => (
   <Fragment>
     {type === "books" && <h3>📚 Books to check</h3>}
-    {type === "articles" && <h3>📚 Articles to check</h3>}
+    {type === "articles" && <h3>🔖 Articles to check</h3>}
 
     <ul>
       {items.map(item => (
