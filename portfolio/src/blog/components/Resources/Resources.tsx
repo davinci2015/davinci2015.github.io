@@ -2,13 +2,14 @@ import React, { Fragment } from "react"
 
 type Props = {
   items: Array<{ title: string; url: string }>
-  type?: "books" | "articles"
+  type?: "book" | "article" | "website"
 }
 
-export const Resources = ({ items, type = "books" }: Props) => (
+export const Resources = ({ items, type = "book" }: Props) => (
   <Fragment>
-    {type === "books" && <h3>📚 Books to check</h3>}
-    {type === "articles" && <h3>🔖 Articles to check</h3>}
+    {type === "book" && <h3>📚 Books to check</h3>}
+    {type === "article" && <h3>🔖 Articles to check</h3>}
+    {type === "website" && <h3>🔖 Websites to check</h3>}
 
     <ul>
       {items.map(item => (
