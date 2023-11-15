@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { Logo, Button, CalendlyButton } from ".."
+import { Logo, CalendlyButton } from ".."
 
 import * as classes from "./style.module.css"
 
