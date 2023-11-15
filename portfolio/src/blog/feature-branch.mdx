@@ -1,0 +1,34 @@
+---
+title: Feature branches are evil
+slug: /feature-branch
+image: ./images/feature-branch/branch.jpg
+readingTime: 4
+date: 11/20/2023
+---
+
+<Intro
+  title={props.pageContext.frontmatter.title}
+  readingTime={props.pageContext.frontmatter.readingTime}
+  date={props.pageContext.frontmatter.date}
+/>
+
+![Feature branch](./images/feature-branch/branch.jpg)
+
+## Conflicts
+
+- Affecting developer's experience
+
+![Github conflicts](./images/feature-branch/conflicts.png)
+
+## Test as you go
+
+- Testing and releasing chunks and not testing the whole feature at once
+
+## Ship value as soon as possible
+
+- Deliver value in frequent chunks rather than working on a single piece for a longer period
+
+## Feature flags or cookie guards
+
+- How to release without exposing the feature to the user
+- How to release without breaking changes
