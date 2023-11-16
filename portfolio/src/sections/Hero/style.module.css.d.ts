@@ -9,6 +9,6 @@ export const ImagePrefix: string;
 export const Image: string;
 export const Social: string;
 export const Calendly: string;
-export const heroImageCont: string;
-export const heroImage: string;
 export const HeroContainer: string;
+export const WavingHand: string;
+export const wave: string;

@@ -100,14 +100,14 @@
   }
 
   .Hero .Title {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     line-height: 4rem;
     margin-bottom: 0;
   }
 
   .Hero .Subtitle {
-    font-size: 1.5rem;
-    line-height: 3rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
   }
 
   .ImagePrefix {
@@ -118,27 +118,14 @@
   .ProfileImage {
     margin-bottom: 0;
     margin-right: 4rem;
-    width: 180px;
-    height: 180px;
+    width: 260px;
+    height: 260px;
   }
 
   .Image {
     width: 48px;
     height: 48px;
   }
-}
-
-.heroImageCont {
-  flex: 25%;
-  width: 100%;
-  margin-top: auto;
-  margin-bottom: auto;
-  padding: 0 3rem 3rem 0;
-}
-
-.heroImageCont .heroImage {
-  width: 100%;
-  border-radius: 50%;
 }
 
 @media (max-width: 768px) {
@@ -149,5 +136,32 @@
 
   .Hero {
     display: block;
+  }
+}
+
+.WavingHand {
+  display: inline-block;
+  animation: wave 1.5s;
+  animation-iteration-count: 2;
+  animation-delay: 1s;
+}
+
+.WavingHand:hover {
+  animation: wave 1.5s infinite;
+  animation-delay: 0;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20%,
+  60% {
+    transform: rotate(15deg);
+  }
+  40%,
+  80% {
+    transform: rotate(-15deg);
   }
 }

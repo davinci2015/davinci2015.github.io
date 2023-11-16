@@ -16,11 +16,14 @@ export const Hero = () => (
         />
         <div className={classes.Hero}>
           <div className={classes.Intro}>
-            <span className={classes.ImagePrefix}>Hey there 👋</span>
+            <span className={classes.ImagePrefix}>
+              Hey there <span className={classes.WavingHand}>👋</span>
+            </span>
           </div>
           <h2 className={classes.Title}>I'm Danijel Vincijanović.</h2>
           <h2 className={classes.Subtitle}>
-            I code and <u>help teams and products grow</u>. Like a gardener.
+            I code and <u>help teams and products grow</u>.<br />
+            Like a gardener 🪴
           </h2>
           <div className={classes.Social}>
             <Button as="a" href="https://www.linkedin.com/in/davinci2015">
