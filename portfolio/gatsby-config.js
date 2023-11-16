@@ -1,12 +1,7 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
- */
+require("dotenv").config({
+  path: ".env",
+})
 
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
 module.exports = {
   siteMetadata: {
     title: `Danijel Vincijanović`,
@@ -23,7 +18,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -67,6 +61,13 @@ module.exports = {
       options: {
         name: `blog-images`,
         path: `${__dirname}/src/blog/images`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-mixpanel",
+      options: {
+        apiToken: process.env.MIXPANEL_API_KEY,
+        pageViews: "all",
       },
     },
   ],
