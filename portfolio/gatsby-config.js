@@ -2,9 +2,6 @@ require("dotenv").config({
   path: ".env",
 })
 
-const x = process.env.MIXPANEL_API_KEY
-console.log("TEST FOR env variable", x)
-
 module.exports = {
   siteMetadata: {
     title: `Danijel Vincijanović`,
@@ -70,7 +67,11 @@ module.exports = {
       resolve: "gatsby-plugin-mixpanel",
       options: {
         apiToken: process.env.MIXPANEL_API_KEY,
+        enableOnDevMode: false,
         pageViews: "all",
+        mixpanelConfig: {
+          persistence: "localStorage",
+        },
       },
     },
   ],
