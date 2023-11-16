@@ -2,6 +2,11 @@ require("dotenv").config({
   path: ".env",
 })
 
+console.log(
+  "Test if process.env.MIXPANEL_API_KEY works",
+  process.env.MIXPANEL_API_KEY
+)
+
 module.exports = {
   siteMetadata: {
     title: `Danijel Vincijanović`,
