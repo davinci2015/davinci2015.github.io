@@ -1,7 +1,7 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
-import { Animation, Button, Section, AIBadge } from "../../components"
+import { Animation, Button, Section } from "../../components"
 
 import * as classes from "./style.module.css"
 
