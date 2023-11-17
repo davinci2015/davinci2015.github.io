@@ -1,4 +1,3 @@
-import { AIBadge } from "./AIBadge/AIBadge"
 import { CalendlyButton } from "./CalendlyButton/CalendlyButton"
 import { Header } from "./Header/Header"
 import { Animation } from "./Animation/Animation"
@@ -19,5 +18,4 @@ export {
   ArticleCard,
   CalendlyButton,
   Layout,
-  AIBadge,
 }
