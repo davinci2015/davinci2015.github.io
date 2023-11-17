@@ -22,7 +22,7 @@ As a first step, you open a new feature branch `my-awesome-feature` and share it
 
 ..._One week after_...
 
-You are close to the finish line - everything went as expected. 
+You are close to the finish line — everything went as expected. 
 You decide that it's time for QA to step in and test the feature before it is released. 
 So, your logical next step is to merge the feature branch to the test branch. 
 
@@ -52,18 +52,26 @@ One way to minimize the risk of conflicts is to setup a reminder like this one:
 
 ![Slackbot reminder](./images/feature-branch/slackbot-reminder.png)
 
-But there is a better way. Do not use (long-living) feature branches!
+But there is a better way — do not use (long-living) feature branches!
 
 ## Test as you go
 
 Now that conflicts are resolved, we merge the feature to the test branch. 
-QA can step in and test the feature. Testing the whole feature takes time and QA might get back to you with an exhaustive list of bugs. 
+QA can step in and test the feature. Manually testing the whole feature takes time and QA might get back to us with an exhaustive list of bugs. 
+This will inevitably prolong the delivery time.
 
-Do not use (long-living) feature branches. Shorten the feedback loop. 
+![QA feature branch](./images/feature-branch/qa1.png)
 
-As soon as there is a piece of code reasonable to test, it should be pushed to testing. 
-It doesn't have to be a complete feature. Bugs that are caught earlier are less expensive that bugs caught later. 
+As soon as there is a piece of feature reasonable to manually test, it should be pushed to testing. 
+It doesn't have to be a complete feature. 
 
+**Bugs caught earlier are less expensive than bugs caught later in the process.** 
+The best scenario is that you manage to catch bugs during development and while writing unit/integration tests. 
+The second best time is when you are self-reviewing published pull request before others.
+
+![QA feature branch](./images/feature-branch/qa2.png)
+
+Shorten the feedback loop — do not use (long-living) feature branches.
 
 
 ## Code reviews
