@@ -1,0 +1,24 @@
+.badge {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px dashed #4f4f4f;
+  padding: 4px 16px;
+  border-radius: 8px;
+}
+
+.badge img {
+  width: 34px;
+  height: 34px;
+  margin-right: 12px;
+  align-self: flex-start;
+}
+
+.badge p {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--subtext-color);
+  align-self: flex-start;
+  margin-right: auto;
+}
