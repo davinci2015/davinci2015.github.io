@@ -41,7 +41,7 @@ I'm pretty sure that you have seen something like this before 👇
 
 ![Github conflicts](./images/feature-branch/conflicts.png)
 
-I don't know about you, but seeing this makes me question career choices. 😅
+I don't know about you, but seeing such conflicts makes me question my career choices. 😅
 
 Some conflicts are easy to resolve but some can give a real hit to developer's experience. 
 Comparing different versions line-by-line can be an exhausting experience. 
@@ -56,7 +56,15 @@ But there is a better way. Do not use (long-living) feature branches!
 
 ## Test as you go
 
-- Testing and releasing chunks and not testing the whole feature at once
+Now that conflicts are resolved, we merge the feature to the test branch. 
+QA can step in and test the feature. Testing the whole feature takes time and QA might get back to you with an exhaustive list of bugs. 
+
+Do not use (long-living) feature branches. Shorten the feedback loop. 
+
+As soon as there is a piece of code reasonable to test, it should be pushed to testing. 
+It doesn't have to be a complete feature. Bugs that are caught earlier are less expensive that bugs caught later. 
+
+
 
 ## Code reviews
 
