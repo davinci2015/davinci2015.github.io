@@ -14,7 +14,7 @@ date: 11/20/2023
 
 ![Feature branch](./images/feature-branch/branch.jpg)
 
-You just had a sprint planning. The team decided to work on a new exciting AI feature that should solve real user's pain.
+You just had a sprint planning. The team decided to work on a new exciting AI feature that should solve real users' pain.
 It is estimated that the feature should take approximately one week to be finished completely. 
 
 Feature requirements are pretty clear so you can dive into the development. 
@@ -43,18 +43,18 @@ I'm pretty sure that you have seen something like this before 👇
 
 I don't know about you, but seeing such conflicts makes me question my career choices. 😅
 
-Some conflicts are easy to resolve but some can give a real hit to developer's experience. 
+Some conflicts are easy to resolve but some can give a real hit to the developer's experience. 
 Comparing different versions line-by-line can be an exhausting experience. 
 
 Or even worse, we are risking messing up the commit history or introducing new bugs with incorrect conflict resolution. 
 
-One way to minimize the risk of conflicts is to setup a reminder like this one:
+One way to minimize the risk of conflicts is to set a reminder like this one:
 
 ![Slackbot reminder](./images/feature-branch/slackbot-reminder.png)
 
 But there is a better way — do not use (long-living) feature branches!
 
-## Test as you go
+## Test as soon as possible
 
 Now that conflicts are resolved, we merge the feature to the test branch. 
 QA can step in and test the feature. Manually testing the whole feature takes time and QA might get back to us with an exhaustive list of bugs. 
@@ -65,22 +65,39 @@ This will inevitably prolong the delivery time.
 As soon as there is a piece of feature reasonable to manually test, it should be pushed to testing. 
 It doesn't have to be a complete feature. 
 
-**Bugs caught earlier are less expensive than bugs caught later in the process.** 
-The best scenario is that you manage to catch bugs during development and while writing unit/integration tests. 
+**Bugs caught sooner are less expensive than bugs caught later in the process.** 
+The best time to catch bugs is during the development and while writing unit/integration tests. 
 The second best time is when you are self-reviewing published pull request before others.
 
 ![QA feature branch](./images/feature-branch/qa2.png)
 
-Shorten the feedback loop — do not use (long-living) feature branches.
+Shorten the QA feedback loop — do not use (long-living) feature branches.
 
+## Ship value as soon as possible
+
+_The early bird catches the worm_ — the sooner we ship the value the better. More chance we catch the customer.
+
+There are several reasons why we want ship value sooner:
+
+1. Deliver value and get feedback from users
+2. Less risk that something will go wrong in production
+3. The implementation does not have to be perfect to solve the problem
+
+When working on a long living feature branch, all of the mentioned points are affected. 
+
+Before you even start with the development, you and your team bet on **assumptions** about the solution you are going to build.
+You assume that the solution will solve the users' pain, need or desire because of the discovery you have already done.  
+
+But what if it doesn't? You already spent time developing something just to realize that it's not solving the problem. 
+It could have been discovered much sooner if you had released a smaller chunk to beta users. 
+
+Shorten the users' feedback loop — do not use (long-living) feature branches.
 
 ## Code reviews
 
 - It is easier to review smaller chunks than large pull requests.
 
-## Ship value as soon as possible
 
-- Deliver value in frequent chunks rather than working on a single piece for a longer period
 
 ## Feature flags or cookie guards
 
