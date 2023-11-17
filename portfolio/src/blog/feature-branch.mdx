@@ -2,7 +2,7 @@
 title: Stop using Feature Branches
 slug: /feature-branch
 image: ./images/feature-branch/branch.jpg
-readingTime: 4
+readingTime: 6
 date: 11/20/2023
 ---
 
@@ -17,7 +17,7 @@ date: 11/20/2023
 ![Feature branch](./images/feature-branch/branch.jpg)
 
 You just had a sprint planning. The team decided to work on a new exciting AI feature that should solve real users' pain.
-It is estimated that the feature should take approximately one week to be finished completely. 
+You estimated that the feature should take approximately one week to be finished completely. 
 
 Feature requirements are pretty clear so you can dive into the development. 
 As a first step, you open a new feature branch `my-awesome-feature` and share it with the team to work on.
@@ -67,17 +67,17 @@ This will inevitably prolong the delivery time.
 As soon as there is a piece of feature reasonable to manually test, it should be pushed to testing. 
 It doesn't have to be a complete feature. 
 
-**Bugs caught sooner are less expensive than bugs caught later in the process.** 
-The best time to catch bugs is during the development and while writing unit/integration tests. 
-The second best time is when you are self-reviewing published pull request before others.
-
 ![QA feature branch](./images/feature-branch/qa2.png)
+
+**Bugs caught sooner are less expensive than bugs caught later in the process.** 
+The best time to catch bugs is during the development, and while writing unit/integration tests. 
+The second best time is when you are self-reviewing published pull request before others.
 
 Shorten the QA feedback loop — do not use (long-living) feature branches.
 
 ## Ship value as soon as possible
 
-_The early bird catches the worm_ — the sooner we ship the value the better. More chance we catch the customer.
+_The early bird catches the worm_ — the sooner we ship the value the better. More chance to catch the potential lead.
 
 There are several reasons why we want ship value sooner:
 
@@ -87,24 +87,55 @@ There are several reasons why we want ship value sooner:
 
 When working on a long living feature branch, all of the mentioned points are affected. 
 
-Before you even start with the development, you and your team bet on **assumptions** about the solution you are going to build.
-You assume that the solution will solve the users' pain, need or desire because of the discovery you have already done.  
+Before you even start with the development, you and your team bet on the solution you are going to build based on **assumptions**.
+You believe that the solution will solve a specific user pain, need or desire based on the discovery you have already done before.  
 
-But what if it doesn't? You already spent time developing something just to realize that it's not solving the problem. 
+However, what if it doesn't? You already spent time developing something just to realize that it's not solving the problem. 
 It could have been discovered much sooner if you had released a smaller chunk to beta users. 
 
 Shorten the users' feedback loop — do not use (long-living) feature branches.
 
-## Code reviews
+## Feature toggles to the rescue
 
-- It is easier to review smaller chunks than large pull requests.
+At this point, you might be wondering how to avoid long-living feature branches. 
+To answer that question, we need to first answer these two:
 
+- How to release without exposing the feature to the user?
+- How to push the feature that is not completely finished?
 
+Having unfinished feature in the production is completely fine. 
+I'm not kidding. Hide it from the user and make sure it doesn't introduce breaking changes. 
 
-## Feature flags or cookie guards
+Hiding the feature from unwanted eyes can be dead simple as following:
 
-- How to release without exposing the feature to the user
-- How to release without breaking changes
+```jsx
+if (devEnvironment || testEnvironment) {
+  return <MyAwesomeFeature />
+}
+```
+
+The snippet above will only render the component to be seen by developers and QA. 
+This can be safely released in production as users won't see it. 
+
+However, this simple solution is not ideal. We also want to show the feature to a subset of users in order to collect feedback.
+In that case, we can use feature toggles. With feature toggles we can change the behavior in the application without any code changes.
+
+```jsx
+if (featureToogle.enableMyAwesomeFeature) {
+  return <MyAwesomeFeature />
+}
+```
+
+A feature toggle can be on a user level. That way, we can turn on/off different features for a specific user. 
+Or we can create groups that will have access to specific features and assign users to the group. 
+For example, we can have _beta users_ group which will have access to the new feature we want to test.
+
+The implementation of feature toggles varies and is not standardized. It will depend entirely on your requirements.
+
+Utilizing feature toggles does not guarantee a long-living feature branch absence. You can still get stuck in a long-living feature branch anyway.
+
+Ultimately, it is up to you and your team to define the minimum scope and split the work into releasable chunks that 
+will deliver value to the user without compromising the code quality.
 
 <Resources 
   type="article" 
