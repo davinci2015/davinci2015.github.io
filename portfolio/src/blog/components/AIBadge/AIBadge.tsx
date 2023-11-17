@@ -22,9 +22,7 @@ export const AIBadge = ({ involvement = "none" }: Props) => (
       <span>
         This article is proudly written by Danijel Vincijanović.
         <br />
-        <strong>
-          AI was used for grammar checks and readability improvements.
-        </strong>
+        <strong>AI was used for readability improvements.</strong>
       </span>
     )}
 
