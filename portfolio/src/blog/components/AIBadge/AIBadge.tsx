@@ -10,7 +10,11 @@ type Props = {
 
 export const AIBadge = ({ involvement = "none" }: Props) => (
   <div className={classes.badge}>
-    <StaticImage src="./ai.jpg" alt="Danijel Vincijanović" />
+    <StaticImage
+      className={classes.image}
+      src="./ai.jpg"
+      alt="Written by human"
+    />
     {involvement === "none" && (
       <span>
         This article is proudly written by Danijel Vincijanović.
