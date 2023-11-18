@@ -19,7 +19,7 @@ date: 11/18/2023
 <PhotoCaption>Photo by Jose Urbano on Unsplash </PhotoCaption>
 
 You just had a sprint planning. The team decided to work on a new exciting AI feature that should solve real users' pain.
-You estimated that the feature should take approximately one week to be finished completely. 
+You estimated that it should take approximately one week to implement the feature. 
 
 Feature requirements are pretty clear so you can dive into the development. 
 As a first step, you open a new feature branch `my-awesome-feature` and share it with the team to work on.
@@ -45,7 +45,7 @@ I'm pretty sure that you have seen something like this before 👇
 
 ![Github conflicts](./images/feature-branch/conflicts.png)
 
-I don't know about you, but seeing such conflicts makes me close the laptop, forever 😅.
+I don't know about you, but seeing such conflicts makes me close the laptop, once and for all 😅.
 
 Some conflicts are easy to resolve but some can give a real hit to the developer's experience. 
 Comparing different versions line-by-line can be an exhausting experience. 
@@ -104,7 +104,7 @@ At this point, you might be wondering how to avoid long-living feature branches.
 To answer that question, we need to first answer these two:
 
 - How to release without exposing the feature to the user?
-- How to push the feature that is not completely finished?
+- How to release the feature that is not completely finished?
 
 Having unfinished feature in the production is completely fine. 
 I'm not kidding. Hide it from the user and make sure it doesn't introduce breaking changes. 
@@ -129,7 +129,7 @@ if (featureToogle.enableMyAwesomeFeature) {
 }
 ```
 
-A feature toggle can be on a user level. That way, we can turn on/off different features for a specific user. 
+A feature toggle can be defined on a user level. That way, we can turn on/off different features for a specific user. 
 Or we can create groups that will have access to specific features and assign users to the group. 
 For example, we can have _beta users_ group which will have access to the new feature we want to test.
 
@@ -138,7 +138,7 @@ The implementation of feature toggles varies and is not standardized. It will de
 Utilizing feature toggles does not guarantee a long-living feature branch absence. You can still get stuck in a long-living feature branch anyway.
 
 Ultimately, it is up to you and your team to define the minimum scope and split the work into releasable chunks that 
-will deliver value to the user without compromising the code quality.
+will deliver value to the user.
 
 <Resources 
   type="article" 
