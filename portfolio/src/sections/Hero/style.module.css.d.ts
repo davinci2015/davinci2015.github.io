@@ -5,7 +5,6 @@ export const Hero: string;
 export const Title: string;
 export const Subtitle: string;
 export const Intro: string;
-export const ImagePrefix: string;
 export const Image: string;
 export const Social: string;
 export const Calendly: string;

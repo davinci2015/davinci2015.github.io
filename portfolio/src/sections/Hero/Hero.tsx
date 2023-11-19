@@ -16,9 +16,7 @@ export const Hero = () => (
         />
         <div className={classes.Hero}>
           <div className={classes.Intro}>
-            <span className={classes.ImagePrefix}>
-              Hey there <span className={classes.WavingHand}>👋</span>
-            </span>
+            <span className={classes.WavingHand}>👋</span>
           </div>
           <h2 className={classes.Title}>I'm Danijel Vincijanović.</h2>
           <h2 className={classes.Subtitle}>

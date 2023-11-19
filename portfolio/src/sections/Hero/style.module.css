@@ -36,21 +36,13 @@
   margin-bottom: 2rem;
   font-weight: 700;
   font-size: 1.25rem;
-  line-height: 1.5rem;
+  line-height: 2rem;
 }
 
 .Intro {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-}
-
-.ImagePrefix {
-  display: inline-block;
-  font-weight: 700;
-  font-size: 2rem;
-  line-height: 3rem;
-  color: var(--primary-color);
 }
 
 .Image {
@@ -100,19 +92,14 @@
   }
 
   .Hero .Title {
-    font-size: 2.25rem;
-    line-height: 4rem;
+    font-size: 2rem;
+    line-height: 3.75rem;
     margin-bottom: 0;
   }
 
   .Hero .Subtitle {
-    font-size: 1.25rem;
-    line-height: 2rem;
-  }
-
-  .ImagePrefix {
-    font-size: 2.5rem;
-    line-height: 4rem;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
   }
 
   .ProfileImage {
@@ -144,6 +131,9 @@
   animation: wave 1.5s;
   animation-iteration-count: 2;
   animation-delay: 1s;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: var(--primary-color);
 }
 
 .WavingHand:hover {

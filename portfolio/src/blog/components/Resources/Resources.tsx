@@ -1,5 +1,7 @@
 import React, { Fragment } from "react"
 
+import { Divider } from "../Divider/Divider"
+
 type Props = {
   items: Array<{ title: string; url: string }>
   type?: "book" | "article" | "website"
@@ -7,6 +9,7 @@ type Props = {
 
 export const Resources = ({ items, type = "book" }: Props) => (
   <Fragment>
+    <Divider />
     {type === "book" && <h3>📚 Books to check</h3>}
     {type === "article" && <h3>🔖 Articles to check</h3>}
     {type === "website" && <h3>🔖 Websites to check</h3>}
