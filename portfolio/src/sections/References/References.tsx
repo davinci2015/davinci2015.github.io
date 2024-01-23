@@ -16,11 +16,11 @@ type Reference = {
 
 const references: Reference[] = [
   {
-    name: "Wojciech Zawistowski",
-    linkedin: "https://www.linkedin.com/in/zawistowski/",
-    role: "VP of Engineering at Contractbook",
-    connection: "Direct manager at Contractbook",
-    image: "wojciech_zawistowski.jpeg",
+    name: "Youenn Bouglouan",
+    linkedin: "https://www.linkedin.com/in/youenn-bouglouan-47455728/",
+    role: "Technical team lead at Contractbook",
+    connection: "Colleague at Contractbook",
+    image: "youenn_bouglouan.jpeg",
   },
   {
     name: "Vladimir Rosančić",
@@ -30,32 +30,11 @@ const references: Reference[] = [
     image: "vladimir_rosancic.jpeg",
   },
   {
-    name: "Eryk Cebula",
-    linkedin: "https://www.linkedin.com/in/eryk-cebula-924b64172/",
-    role: "Full Stack developer at Contractbook",
-    connection: "Colleague at Contractbook",
-    image: "eryk_cebula.jpeg",
-  },
-  {
     name: "Tomislav Borbaš",
     linkedin: "https://www.linkedin.com/in/tomislavborbas",
     connection: "Colleague at COBE",
     role: "Web team lead at COBE",
     image: "tomislav_borbas.jpeg",
-  },
-  {
-    name: "Nikolina Mihić",
-    linkedin: "https://hr.linkedin.com/in/nikolina-mihic",
-    connection: "Colleague at COBE",
-    role: "Lead Software QA Engineer at COBE",
-    image: "nikolina_mihic.jpeg",
-  },
-  {
-    name: "Ivan Jurlina",
-    linkedin: "https://hr.linkedin.com/in/ivanjurlina",
-    connection: "Colleague at COBE",
-    role: "HR Manager at COBE",
-    image: "ivan_jurlina.jpeg",
   },
 ]
 
