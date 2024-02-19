@@ -27,7 +27,7 @@ export const Header = () => {
             onClick={() => mixpanel.track("Download resume")}
             className={classes.NavLink}
             href="../../Resume.pdf"
-            download="you_are_looking_for_this_software_engineer.pdf"
+            download="danijel_vincijanovic.pdf"
           >
             Resume
           </a>
