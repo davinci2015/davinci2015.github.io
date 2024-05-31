@@ -1,6 +1,6 @@
-import * as React from "react"
+import React from "react"
 
-import { CalendlyButton, Seo, Layout } from "../components"
+import { Seo, Layout } from "../components"
 
 import * as classes from "./404.module.css"
 
@@ -10,7 +10,6 @@ const NotFoundPage = () => (
       <div title="seems like you're lost" className={classes.NotFound}>
         seems like you're lost
       </div>
-      <CalendlyButton text="Seriously, let's talk ☕" />
     </div>
   </Layout>
 )

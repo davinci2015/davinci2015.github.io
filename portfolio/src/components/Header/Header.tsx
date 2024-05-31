@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { useMixpanel } from "gatsby-plugin-mixpanel"
 
-import { Logo, CalendlyButton } from ".."
+import { Logo } from ".."
 
 import * as classes from "./style.module.css"
 
@@ -31,7 +31,6 @@ export const Header = () => {
           >
             Resume
           </a>
-          <CalendlyButton text="Contact" />
         </nav>
       </div>
     </header>
