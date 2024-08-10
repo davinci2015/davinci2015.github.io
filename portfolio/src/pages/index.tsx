@@ -1,13 +1,12 @@
-import * as React from "react"
+import React from "react"
 
 import { Seo, Layout } from "../components"
-import { Blog, Hero, References } from "../sections"
+import { Blog, Hero } from "../sections"
 
 const IndexPage = () => (
   <Layout>
     <Hero />
     <Blog title="Latest Articles" maxArticlesToShow={3} />
-    <References />
   </Layout>
 )
 
