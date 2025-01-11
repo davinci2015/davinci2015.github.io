@@ -1,0 +1,9 @@
+.Container {
+  margin-bottom: 22px;
+}
+
+@media (min-width: 992px) {
+  .Container {
+    margin-bottom: 64px;
+  }
+}
