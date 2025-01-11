@@ -1,0 +1,64 @@
+---
+title: React Native App Crashes when targetSdkVersion upgraded to 34 (Android 14)
+slug: /react-native-receiver-exported-app-crash
+image: ./images/broken-phone.png
+readingTime: 2
+date: 01/11/2024
+---
+
+<Intro
+  title={props.pageContext.frontmatter.title}
+  readingTime={props.pageContext.frontmatter.readingTime}
+  date={props.pageContext.frontmatter.date}
+/>
+
+![React Native App crash](./images/broken-phone.png)
+
+<PhotoCaption>Photo by Agê Barros on Unsplash</PhotoCaption>
+
+After I upgraded `targetSdkVersion` to 34 for React Native app, it started crashing on launch with the following error:
+
+<Quote>
+java.lang.SecurityException: One of RECEIVER_EXPORTED or RECEIVER_NOT_EXPORTED should be specified when a receiver isn’t being registered exclusively for system broadcasts.
+</Quote>
+
+I used `adb logcat` command to find the what is the actual error that caused app to crash on launch. 
+The error happens due to Android 14 requiring broadcast receivers. This ensures secure handling of broadcast intents and prevents unintended access by other apps. Learn more from the [Android 14 behavior changes](https://developer.android.com/about/versions/14/behavior-changes-14#runtime-receivers-exported).
+
+## Resolving the Issue
+
+Run following command to find all libraries that use `registerReceiver`.
+
+```bash
+grep -R "\.registerReceiver" ./node_modules/
+```
+
+You should get output like following:
+
+```
+./node_modules//react-native-device-info/android/src/main/java/com/learnium/RNDeviceInfo/RNDeviceModule.java:    Intent batteryStatus = getReactApplicationContext().registerReceiver(null, ifilter);
+./node_modules//react-native-device-info/android/src/main/java/com/learnium/RNDeviceInfo/RNDeviceModule.java:    Intent intent = getReactApplicationContext().registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+./node_modules//react-native-device-info/android/src/main/java/com/learnium/RNDeviceInfo/RNDeviceModule.java:    Intent intent = getReactApplicationContext().registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+./node_modules//react-native-device-info/android/src/main/java/com/learnium/RNDeviceInfo/RNDeviceModule.java:      context.registerReceiver(receiver, filter, Context.RECEIVER_NOT_EXPORTED);
+./node_modules//react-native-device-info/android/src/main/java/com/learnium/RNDeviceInfo/RNDeviceModule.java:      context.registerReceiver(receiver, filter);
+./node_modules//react-native/ReactAndroid/src/main/java/com/facebook/react/devsupport/DevSupportManagerBase.java:        mApplicationContext.registerReceiver(mReloadAppBroadcastReceiver, filter);
+./node_modules//react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/react/JsDevReloadHandler.java:            activity.registerReceiver(reloadReceiver, new IntentFilter(RELOAD_BROADCAST), Context.RECEIVER_EXPORTED);
+./node_modules//react-native-navigation/lib/android/app/src/main/java/com/reactnativenavigation/react/JsDevReloadHandler.java:            activity.registerReceiver(reloadReceiver, new IntentFilter(RELOAD_BROADCAST));
+```
+
+Notice that few libraries are using `registerReceiver`.
+
+### Update Affected Packages
+
+Check if the identified libraries have updates. In my case, the issue was resolved by updating:
+- `react-native-device-info`
+- `react-native-navigation`
+
+Update dependencies:
+
+```bash
+npm install react-native-device-info@latest
+npm install react-native-navigation@latest
+```
+
+Rebuild the app and ensure that it runs on Android 14 without crashing.
