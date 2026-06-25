@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎂 ROĐENDANSKA KATASTROFA 🎂</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Rubik:wght@700;900&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Fredoka', system-ui, sans-serif;
+      background: #0a0015;
+      color: #fff;
+      overflow-x: hidden;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='24' font-size='24'%3E🎂%3C/text%3E%3C/svg%3E") 16 16, auto;
+      min-height: 100vh;
+    }
+
+    .rainbow-bg {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(45deg, #ff006e, #fb5607, #ffbe0b, #8338ec, #3a86ff, #ff006e);
+      background-size: 400% 400%;
+      animation: rainbow 3s ease infinite;
+      opacity: 0.25;
+      z-index: 0;
+    }
+
+    @keyframes rainbow {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: -10px;
+      z-index: 9999;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+      }
+    }
+
+    .fullscreen-gate {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    #gate {
+      display: none;
+    }
+
+    #password-gate h1 {
+      font-family: 'Rubik', system-ui, sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.5rem, 5vw, 2.8rem);
+      color: #ff006e;
+    }
+
+    .password-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: min(100%, 320px);
+    }
+
+    .password-form input {
+      font-family: inherit;
+      font-size: 1.3rem;
+      padding: 0.9rem 1.2rem;
+      border: 3px solid #8338ec;
+      border-radius: 12px;
+      background: #1a0a2e;
+      color: #ffbe0b;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .password-form input:focus {
+      outline: none;
+      border-color: #ffbe0b;
+      box-shadow: 0 0 20px rgba(255, 190, 11, 0.4);
+    }
+
+    .password-form input.error {
+      border-color: #ff006e;
+      animation: inputShake 0.4s ease;
+    }
+
+    @keyframes inputShake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20%,
+      60% {
+        transform: translateX(-8px);
+      }
+
+      40%,
+      80% {
+        transform: translateX(8px);
+      }
+    }
+
+    .password-form button {
+      font-family: inherit;
+      font-size: 1.2rem;
+      padding: 0.9rem 1.5rem;
+      border: 3px solid #ff006e;
+      background: #8338ec;
+      color: #fff;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    .password-form button:hover {
+      transform: scale(1.05) rotate(-2deg);
+    }
+
+    #password-error {
+      color: #ff006e;
+      font-size: 1rem;
+      min-height: 1.5rem;
+      font-weight: bold;
+    }
+
+    .password-hint {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      max-width: 400px;
+    }
+
+    .attempts-badge {
+      font-size: 0.75rem;
+      color: #8338ec;
+      opacity: 0.8;
+    }
+
+    #gate {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 10000;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    #gate.visible {
+      display: flex;
+    }
+
+    #gate h1 {
+      font-family: 'Rubik', system-ui, sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      color: #ffbe0b;
+      animation: shake 0.3s infinite;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translate(0);
+      }
+
+      25% {
+        transform: translate(-3px, 2px) rotate(-1deg);
+      }
+
+      75% {
+        transform: translate(3px, -2px) rotate(1deg);
+      }
+    }
+
+    #gate p {
+      font-size: 1.2rem;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    #gate button {
+      font-family: inherit;
+      font-size: 1.4rem;
+      padding: 1rem 2.5rem;
+      border: 4px solid #ff006e;
+      background: #ffbe0b;
+      color: #000;
+      border-radius: 50px;
+      cursor: pointer;
+      animation: pulse 1s infinite;
+      transition: transform 0.1s;
+    }
+
+    #gate button:hover {
+      transform: scale(1.1) rotate(-3deg);
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 190, 11, 0.7);
+      }
+
+      50% {
+        box-shadow: 0 0 0 20px rgba(255, 190, 11, 0);
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      display: none;
+    }
+
+    .container.visible {
+      display: block;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-family: 'Rubik', system-ui, sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 8vw, 4.5rem);
+      background: linear-gradient(90deg, #ff006e, #ffbe0b, #3a86ff, #ff006e);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 2s linear infinite, wobble 2s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    @keyframes wobble {
+
+      0%,
+      100% {
+        transform: rotate(-2deg) scale(1);
+      }
+
+      50% {
+        transform: rotate(2deg) scale(1.05);
+      }
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      margin-top: 1rem;
+      color: #ffbe0b;
+      animation: blink 1.5s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 3px dashed #ff006e;
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '⚠️';
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      font-size: 2rem;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .card h2 {
+      color: #ffbe0b;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .card p {
+      line-height: 1.7;
+      margin-bottom: 0.8rem;
+    }
+
+    /* VIRUS SCANNER */
+    .scanner {
+      background: #001100;
+      border: 2px solid #0f0;
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #0f0;
+      min-height: 180px;
+      margin: 1rem 0;
+    }
+
+    .scanner-line {
+      margin: 4px 0;
+      opacity: 0;
+      animation: typeIn 0.3s forwards;
+    }
+
+    @keyframes typeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .progress-bar {
+      height: 20px;
+      background: #003300;
+      border: 1px solid #0f0;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #0f0;
+      width: 0%;
+      transition: width 0.2s;
+      box-shadow: 0 0 10px #0f0;
+    }
+
+    /* RUNAWAY BUTTON */
+    .game-area {
+      position: relative;
+      height: 200px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 16px;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
+
+    #runaway-btn {
+      position: absolute;
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, #ff006e, #ffbe0b);
+      border: none;
+      border-radius: 50px;
+      color: #fff;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: none;
+      box-shadow: 0 4px 15px rgba(255, 0, 110, 0.5);
+    }
+
+    .score {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #ffbe0b;
+      margin-top: 0.5rem;
+    }
+
+    /* CANDLE GAME */
+    .candles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+
+    .candle {
+      font-size: 2rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+      user-select: none;
+    }
+
+    .candle:hover {
+      transform: scale(1.3);
+    }
+
+    .candle.blown {
+      filter: grayscale(1);
+      transform: scale(0.7);
+      opacity: 0.4;
+    }
+
+    /* AGE CALCULATOR */
+    .age-display {
+      font-size: 4rem;
+      text-align: center;
+      color: #ff006e;
+      font-family: 'Rubik', system-ui, sans-serif;
+      font-weight: 900;
+      margin: 1rem 0;
+      transition: all 0.3s;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 0.7rem 1.4rem;
+      border: 2px solid #8338ec;
+      background: transparent;
+      color: #fff;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: #8338ec;
+      transform: rotate(-2deg) scale(1.05);
+    }
+
+    .btn.danger {
+      border-color: #ff006e;
+      background: rgba(255, 0, 110, 0.2);
+    }
+
+    .btn.danger:hover {
+      background: #ff006e;
+    }
+
+    /* FAKE POPUP */
+    .fake-popup {
+      position: fixed;
+      background: #c0c0c0;
+      border: 3px outset #fff;
+      padding: 0;
+      z-index: 8000;
+      font-family: 'Fredoka', 'Tahoma', sans-serif;
+      font-size: 12px;
+      color: #000;
+      box-shadow: 4px 4px 0 #000;
+      display: none;
+      min-width: 280px;
+    }
+
+    .fake-popup.show {
+      display: block;
+    }
+
+    .popup-title {
+      background: linear-gradient(90deg, #000080, #1084d0);
+      color: #fff;
+      padding: 4px 8px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .popup-body {
+      padding: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .popup-icon {
+      font-size: 32px;
+    }
+
+    .popup-btns {
+      padding: 8px 16px 12px;
+      text-align: right;
+    }
+
+    .popup-btns button {
+      font-family: 'Fredoka', 'Tahoma', sans-serif;
+      font-size: 11px;
+      padding: 4px 20px;
+      border: 2px outset #fff;
+      background: #c0c0c0;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+
+    .music-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9000;
+      font-size: 2rem;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid #ffbe0b;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .music-toggle.visible {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .floating-emoji {
+      position: fixed;
+      font-size: 3rem;
+      pointer-events: none;
+      z-index: 5000;
+      animation: floatUp 2s ease-out forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-200px) rotate(360deg);
+      }
+    }
+
+    .marquee-wrap {
+      overflow: hidden;
+      background: #ff006e;
+      padding: 8px 0;
+      margin: 2rem -1.5rem;
+      border-top: 3px solid #ffbe0b;
+      border-bottom: 3px solid #ffbe0b;
+    }
+
+    .marquee {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 15s linear infinite;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .marquee span {
+      padding: 0 2rem;
+    }
+
+    .final-reveal {
+      text-align: center;
+      display: none;
+      padding: 2rem;
+      animation: popIn 0.5s ease;
+    }
+
+    .final-reveal.show {
+      display: block;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .final-reveal h2 {
+      font-size: 2.5rem;
+      color: #ffbe0b;
+      margin-bottom: 1rem;
+    }
+
+    .final-reveal .big-emoji {
+      font-size: 5rem;
+      animation: bounce 0.5s infinite alternate;
+    }
+
+    @keyframes bounce {
+      to {
+        transform: translateY(-20px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="rainbow-bg"></div>
+
+  <!-- PASSWORD GATE -->
+  <div id="password-gate" class="fullscreen-gate">
+    <h1>🔐 ZAKLJUČANO 🔐</h1>
+    <p>
+      Ova stranica je za <strong>posebne ljude</strong> koji znaju kad kumu rođendan i to ne zaborave idući puta.
+      <br>Unesi <strong>moj rođendan</strong> da uđeš.
+    </p>
+    <form class="password-form" id="password-form">
+      <input type="text" id="birthday-input" placeholder="DD.MM.GGGG" autocomplete="off" inputmode="numeric"
+        maxlength="10" aria-label="Rođendan" />
+      <button type="submit">🎂 OTKLJUČAJ 🎂</button>
+    </form>
+    <p id="password-error"></p>
+    <p class="password-hint">Format: dan.mjesec.godina &nbsp;·&nbsp; npr. 15.03.1995</p>
+    <p class="attempts-badge" id="attempts-badge"></p>
+  </div>
+
+  <!-- GATE / PRANK ENTRY -->
+  <div id="gate">
+    <h1>⚠️ UPOZORENJE ⚠️</h1>
+    <p>
+      Ha glupane, evo ti virus hehe.
+      Ova stranica sadrži <strong>ekstremne doze rođendanske ludosti</strong>, bježeće torte i glazbu koja će ti ostati
+      u glavi 3 tjedna.
+      <br><br>
+      <em>Nastavljaš na vlastitu odgovornost. Nitko te nije tjerao.</em>
+    </p>
+    <button id="enter-btn">DA, VOLIM PATNJU 🎂</button>
+    <p style="font-size:0.8rem; opacity:0.5;">(klikni 7 puta za bonus iznenađenje)</p>
+  </div>
+
+  <button class="music-toggle" id="music-toggle" title="Glazba on/off">🔊</button>
+
+  <main class="container" id="main">
+    <section class="hero">
+      <h1>SRETAN ROĐENDAN KIRKOSAURUS OD KUMAŠINA!</h1>
+      <p class="subtitle">🎉 Službeno si stariji. Čestitam i suosjećam. 🎉</p>
+    </section>
+
+    <div class="marquee-wrap">
+      <div class="marquee" id="marquee">
+        <span>🎂 TORTA NIJE LAŽNA ALI KALORIJE JESU 🎂</span>
+        <span>🕯️ DUHOVI PROŠLIH ROĐENDANA PRATE TE 🕯️</span>
+        <span>🎈 BALONI ZNAJU GDJE ŽIVIŠ 🎈</span>
+        <span>🍾 ŠAMPANJAC SE SAM OTVARA KAD TE VIDI 🍾</span>
+        <span>🎂 TORTA NIJE LAŽNA ALI KALORIJE JESU 🎂</span>
+        <span>🕯️ DUHOVI PROŠLIH ROĐENDANA PRATE TE 🕯️</span>
+        <span>🎈 BALONI ZNAJU GDJE ŽIVIŠ 🎈</span>
+        <span>🍾 ŠAMPANJAC SE SAM OTVARA KAD TE VIDI 🍾</span>
+      </div>
+    </div>
+
+    <!-- ROAST MESSAGE -->
+    <div class="card">
+      <h2>💌 Osobna poruka od tvog "prijatelja"</h2>
+      <p>
+        Dragi moj <strong>vječni rođendanski ratnik</strong>,
+      </p>
+      <p>
+        Još jedna godina je prošla, a ti si i dalje onaj isti — samo s više sijedih vlasi
+        i manje tolerancije na alkohol. Ali hej, bar si živ! To je više nego što možemo reći
+        za tortu koju sam naručio (pojeo ju je pas).
+      </p>
+      <p>
+        Želim ti godine punu smijeha, avantura, i ljudi koji će ti platiti piće.
+        Ako te itko pita koliko imaš godina — <em>laži brzo i glasno</em>.
+        Rođendani su jedini dan kad laž nije grijeh, nego strategija preživljavanja.
+      </p>
+      <p style="color:#ff006e; font-weight:bold;">
+        PS: Ova stranica te prati. Zauvijek. 🎂👁️
+      </p>
+    </div>
+
+    <!-- VIRUS SCANNER PRANK -->
+    <div class="card">
+      <h2>🦠 Rođendanski Antivirus 3000™</h2>
+      <p>Skeniram tvoju dušu u potrazi za rođendanskim virusima...</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="scan-progress"></div>
+      </div>
+      <div class="scanner" id="scanner-output"></div>
+      <div class="btn-row">
+        <button class="btn danger" id="scan-btn">🔍 POKRENI SKENIRANJE</button>
+        <button class="btn" id="panic-btn" style="display:none;">😱 PANIKA</button>
+      </div>
+    </div>
+
+    <!-- RUNAWAY CAKE GAME -->
+    <div class="card">
+      <h2>🎂 Uhvati Tortu (nemoguća misija)</h2>
+      <p>Torta ne želi biti pojedena. Uhvati je 5 puta da dokažeš da zaslužuješ kolač!</p>
+      <div class="game-area" id="game-area">
+        <button id="runaway-btn">🎂 UZMI ME!</button>
+      </div>
+      <div class="score" id="cake-score">Uhvaćeno: 0 / 5</div>
+    </div>
+
+    <!-- CANDLE BLOWING -->
+    <div class="card">
+      <h2>🕯️ Duhovi Svijeća</h2>
+      <p>Puši sve svijeće prije nego te duh prošlog rođendana uhvati! (klik = puhanje)</p>
+      <div class="candles" id="candles"></div>
+      <div class="score" id="candle-score">Preostalo: 12 svijeća 👻</div>
+    </div>
+
+    <!-- AGE CALCULATOR PRANK -->
+    <div class="card">
+      <h2>🧮 Znanstveni Kalkulator Godina</h2>
+      <p>Ovaj kalkulator koristi naprednu tehnologiju i <em>apsolutno je točan</em>.</p>
+      <div class="age-display" id="age-display">??</div>
+      <div class="btn-row">
+        <button class="btn" id="calc-age-btn">Izračunaj moju dob</button>
+        <button class="btn danger" id="add-age-btn" style="display:none;">➕ Dodaj još godina</button>
+      </div>
+    </div>
+
+    <!-- FINAL REVEAL -->
+    <div class="final-reveal" id="final-reveal">
+      <div class="big-emoji">🎉🎂🥳🍾🎈</div>
+      <h2>PROŠAO SI SVE TESTOVE!</h2>
+      <p style="font-size:1.2rem; margin-top:1rem;">
+        Službeno si proglašen <strong>Kraljem/Kraljicom Rođendana</strong>!<br>
+        Tvoja nagrada: još jedna godina. Besplatno. Bez povrata.
+      </p>
+      <p style="margin-top:1rem; color:#ffbe0b;">
+        Volimo te, ludaku. 🫶
+      </p>
+    </div>
+  </main>
+
+  <!-- FAKE POPUPS -->
+  <div class="fake-popup" id="popup1" style="top:20%; left:10%;">
+    <div class="popup-title"><span>🎂 Windows Rođendan</span><span>✕</span></div>
+    <div class="popup-body">
+      <div class="popup-icon">⚠️</div>
+      <div>Upozorenje: Detektirana je <strong>kritična razina starosti</strong>. Preporučujemo odmah slavlje.</div>
+    </div>
+    <div class="popup-btns"><button onclick="closePopup('popup1')">OK</button></div>
+  </div>
+
+  <div class="fake-popup" id="popup2" style="top:35%; right:5%;">
+    <div class="popup-title"><span>🦠 Rođendanski Virus</span><span>✕</span></div>
+    <div class="popup-body">
+      <div class="popup-icon">🎈</div>
+      <div>Baloni.exe se uspješno instalirao u tvoj mozak. Nema deinstalacije.</div>
+    </div>
+    <div class="popup-btns"><button onclick="closePopup('popup2')">U redu</button><button
+        onclick="closePopup('popup2')">Otkaži</button></div>
+  </div>
+
+  <div class="fake-popup" id="popup3" style="bottom:25%; left:20%;">
+    <div class="popup-title"><span>💾 Spremi rođendan?</span><span>✕</span></div>
+    <div class="popup-body">
+      <div class="popup-icon">🍰</div>
+      <div>Želiš li spremiti ovaj rođendan? <br><em>Nedovoljno prostora na disku (život je prekratak).</em></div>
+    </div>
+    <div class="popup-btns"><button onclick="closePopup('popup3')">Da</button><button
+        onclick="closePopup('popup3')">Ne</button><button onclick="closePopup('popup3')">Možda</button></div>
+  </div>
+
+  <script>
+    // 🔧 PROMIJENI OVO — tvoj rođendan (dan, mjesec, godina):
+    const MY_BIRTHDAY = { day: 18, month: 5, year: 1993 };
+
+    // ============ PASSWORD GATE ============
+    const wrongMessages = [
+      'Krivo! Jesi li uopće moj prijatelj? 😤',
+      'NE. Razmisli još malo... ili pitaj mamu. 👀',
+      'Ozbiljno? Ne znaš moj rođendan?! 💔',
+      'Još jedan pokušaj i šaljem ti samo čestitku u Wordu.',
+      'Hint: nisam rođen 1.1. — ali ti si blizu... ne, nisi. 🤡',
+      'Možda trebaš manje Instagrama, više pamćenja.',
+      'Zadnja šansa prije nego te stranica zauvijek zaključa. (lažem, ali dramatično zvuči)',
+    ];
+
+    function parseBirthday(input) {
+      const cleaned = input.trim().replace(/[/\-]/g, '.').replace(/\s+/g, '');
+      const match = cleaned.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+      if (!match) return null;
+      const day = parseInt(match[1], 10);
+      const month = parseInt(match[2], 10);
+      const year = parseInt(match[3], 10);
+      if (month < 1 || month > 12 || day < 1 || day > 31 || year < 1900 || year > 2100) return null;
+      return { day, month, year };
+    }
+
+    function isCorrectBirthday(parsed) {
+      return (
+        parsed.day === MY_BIRTHDAY.day &&
+        parsed.month === MY_BIRTHDAY.month &&
+        parsed.year === MY_BIRTHDAY.year
+      );
+    }
+
+    let passwordAttempts = 0;
+    const passwordForm = document.getElementById('password-form');
+    const birthdayInput = document.getElementById('birthday-input');
+    const passwordError = document.getElementById('password-error');
+    const attemptsBadge = document.getElementById('attempts-badge');
+
+    passwordForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const parsed = parseBirthday(birthdayInput.value);
+
+      if (!parsed) {
+        birthdayInput.classList.add('error');
+        passwordError.textContent = 'Format nije dobar! Koristi DD.MM.GGGG 🙄';
+        playNote(150, 200, 'sawtooth');
+        setTimeout(() => birthdayInput.classList.remove('error'), 400);
+        return;
+      }
+
+      if (isCorrectBirthday(parsed)) {
+        passwordError.textContent = '';
+        passwordError.style.color = '#06d6a0';
+        passwordError.textContent = '✅ TOČNO! Ulaziš u ludilo...';
+        playSillyBurst();
+        spawnConfetti(50);
+        setTimeout(() => {
+          document.getElementById('password-gate').style.display = 'none';
+          document.getElementById('gate').classList.add('visible');
+        }, 800);
+        return;
+      }
+
+      passwordAttempts++;
+      birthdayInput.classList.add('error');
+      passwordError.style.color = '#ff006e';
+      passwordError.textContent = wrongMessages[Math.min(passwordAttempts - 1, wrongMessages.length - 1)];
+      attemptsBadge.textContent = `Neuspjelih pokušaja: ${passwordAttempts} 🎯`;
+      playNote(100 + passwordAttempts * 30, 300, 'square');
+      spawnConfetti(5);
+      setTimeout(() => birthdayInput.classList.remove('error'), 400);
+      birthdayInput.value = '';
+      birthdayInput.focus();
+    });
+
+    birthdayInput.addEventListener('input', () => {
+      passwordError.textContent = '';
+    });
+
+    // ============ CONFETTI ============
+    const colors = ['#ff006e', '#fb5607', '#ffbe0b', '#8338ec', '#3a86ff', '#06d6a0'];
+    function spawnConfetti(amount = 50) {
+      for (let i = 0; i < amount; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.animationDuration = (2 + Math.random() * 3) + 's';
+        c.style.animationDelay = Math.random() * 2 + 's';
+        c.style.width = (6 + Math.random() * 10) + 'px';
+        c.style.height = c.style.width;
+        c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 6000);
+      }
+    }
+
+    // ============ SILLY MUSIC (Web Audio API) ============
+    let audioCtx = null;
+    let musicPlaying = false;
+    let musicInterval = null;
+
+    const sillyMelody = [
+      { note: 523, dur: 200 }, { note: 523, dur: 100 }, { note: 587, dur: 400 },
+      { note: 523, dur: 400 }, { note: 698, dur: 400 }, { note: 659, dur: 800 },
+      { note: 523, dur: 200 }, { note: 523, dur: 100 }, { note: 587, dur: 400 },
+      { note: 523, dur: 400 }, { note: 784, dur: 400 }, { note: 698, dur: 800 },
+      { note: 523, dur: 200 }, { note: 523, dur: 100 }, { note: 1047, dur: 400 },
+      { note: 880, dur: 400 }, { note: 698, dur: 400 }, { note: 659, dur: 400 },
+      { note: 587, dur: 800 },
+      // silly extra notes
+      { note: 330, dur: 150 }, { note: 440, dur: 150 }, { note: 550, dur: 150 },
+      { note: 880, dur: 300 }, { note: 784, dur: 300 }, { note: 698, dur: 600 },
+    ];
+
+    function playNote(freq, duration, type = 'square') {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.value = freq + (Math.random() * 20 - 10); // slightly off-key = silly
+      gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration / 1000);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration / 1000);
+    }
+
+    function playSillyBurst() {
+      const sillyNotes = [200, 300, 400, 500, 600, 800, 1000, 150];
+      sillyNotes.forEach((n, i) => {
+        setTimeout(() => playNote(n, 100, ['square', 'sawtooth', 'triangle'][i % 3]), i * 80);
+      });
+    }
+
+    let melodyIndex = 0;
+    function playMelodyStep() {
+      if (!musicPlaying) return;
+      const step = sillyMelody[melodyIndex % sillyMelody.length];
+      const types = ['square', 'sawtooth', 'triangle'];
+      playNote(step.note, step.dur, types[melodyIndex % 3]);
+      melodyIndex++;
+    }
+
+    function startMusic() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      musicPlaying = true;
+      document.getElementById('music-toggle').textContent = '🔊';
+      playMelodyStep();
+      musicInterval = setInterval(playMelodyStep, 250);
+    }
+
+    function stopMusic() {
+      musicPlaying = false;
+      clearInterval(musicInterval);
+      document.getElementById('music-toggle').textContent = '🔇';
+    }
+
+    document.getElementById('music-toggle').addEventListener('click', () => {
+      if (musicPlaying) stopMusic();
+      else startMusic();
+    });
+
+    // ============ GATE ============
+    let enterClicks = 0;
+    document.getElementById('enter-btn').addEventListener('click', function (e) {
+      enterClicks++;
+      playSillyBurst();
+      spawnConfetti(20);
+
+      if (enterClicks < 7) {
+        const msgs = [
+          'Nisi još spreman...',
+          'Još malo...',
+          'Skoro...',
+          'Još jedan klik...',
+          'Pazi, sad ide...',
+          'ZADNJI PUT PITAM...',
+        ];
+        this.textContent = msgs[enterClicks - 1] || 'DA, VOLIM PATNJU 🎂';
+        this.style.transform = `rotate(${enterClicks * 45}deg) scale(${1 + enterClicks * 0.1})`;
+        return;
+      }
+
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('main').classList.add('visible');
+      document.getElementById('music-toggle').classList.add('visible');
+      startMusic();
+      spawnConfetti(100);
+
+      setTimeout(() => showPopup('popup1'), 1500);
+      setTimeout(() => showPopup('popup2'), 3500);
+      setTimeout(() => showPopup('popup3'), 5500);
+    });
+
+    function showPopup(id) {
+      document.getElementById(id).classList.add('show');
+      playSillyBurst();
+    }
+
+    function closePopup(id) {
+      document.getElementById(id).classList.remove('show');
+      spawnConfetti(15);
+    }
+
+    // ============ VIRUS SCANNER ============
+    const scanResults = [
+      'C:\\Users\\Ti\\Documents\\tajne\\kolicina_piva.exe ........ ZARAŽENO 🍺',
+      'C:\\Mozak\\memorija\\prosle_godine\\18_godina.bak ........ OBRISANO 💀',
+      'C:\\Srce\\velicina.dll ........ PREVELIKO ❤️',
+      'C:\\Lice\\borice_se_pojavljuju.sys ........ AKTIVNO 👴',
+      'C:\\Društveni_život\\planovi_za_večer.dat ........ NULL 🛋️',
+      'C:\\Torta\\kalorije\\sve.exe ........ KRITIČNO 🎂',
+      'C:\\Rođendan\\duhovi\\prošle_godine.ghost ........ PRONAĐENO 👻',
+      'C:\\Ego\\velicina.ini ........ PREVELIKO 😎',
+      'C:\\Spavanje\\planovi_za_sutra.sys ........ ODGOĐENO DO SLJEDEĆEG ROĐENDANA 😴',
+      'C:\\Ljubav\\od_prijatelja\\ova_stranica.html ........ INSTALIRANO 🫶',
+    ];
+
+    document.getElementById('scan-btn').addEventListener('click', async function () {
+      const output = document.getElementById('scanner-output');
+      const progress = document.getElementById('scan-progress');
+      const panicBtn = document.getElementById('panic-btn');
+      output.innerHTML = '';
+      progress.style.width = '0%';
+      this.disabled = true;
+      playSillyBurst();
+
+      for (let i = 0; i < scanResults.length; i++) {
+        await new Promise(r => setTimeout(r, 400 + Math.random() * 300));
+        const line = document.createElement('div');
+        line.className = 'scanner-line';
+        line.textContent = '> ' + scanResults[i];
+        line.style.animationDelay = '0s';
+        output.appendChild(line);
+        progress.style.width = ((i + 1) / scanResults.length * 100) + '%';
+        playNote(400 + i * 50, 100, 'sawtooth');
+        output.scrollTop = output.scrollHeight;
+      }
+
+      const final = document.createElement('div');
+      final.className = 'scanner-line';
+      final.style.color = '#ff0';
+      final.style.fontWeight = 'bold';
+      final.style.marginTop = '12px';
+      final.textContent = '>>> REZULTAT: 10/10 ROĐENDANSKIH VIRUSA PRONAĐENO. NEMA LIJEKA. SAMO TORTA. <<<';
+      output.appendChild(final);
+      panicBtn.style.display = 'inline-block';
+      this.disabled = false;
+      spawnConfetti(30);
+    });
+
+    document.getElementById('panic-btn').addEventListener('click', () => {
+      playSillyBurst();
+      spawnConfetti(80);
+      document.body.style.animation = 'rainbow 0.5s ease infinite';
+      alert('PANIKA NE POMOŽE. ROĐENDAN JE NEIZBJEŽAN. 🎂');
+    });
+
+    // ============ RUNAWAY CAKE ============
+    let cakeCaught = 0;
+    const runawayBtn = document.getElementById('runaway-btn');
+    const gameArea = document.getElementById('game-area');
+    const taunts = [
+      '🎂 UZMI ME!', '🏃 NE MOŽEŠ ME!', '😏 PRESPORO!',
+      '🎂 HAHAHA!', '🍰 UHVATI ME!', '💨 BJEŽIM!',
+      '🎂 NEĆEŠ ME!', '😜 LJUBI BOK!', '🎂 JOŠ MALO!',
+    ];
+
+    function moveButton() {
+      const area = gameArea.getBoundingClientRect();
+      const btn = runawayBtn.getBoundingClientRect();
+      const maxX = area.width - btn.width - 10;
+      const maxY = area.height - btn.height - 10;
+      runawayBtn.style.left = Math.random() * maxX + 'px';
+      runawayBtn.style.top = Math.random() * maxY + 'px';
+      runawayBtn.textContent = taunts[Math.floor(Math.random() * taunts.length)];
+    }
+
+    runawayBtn.addEventListener('mouseenter', moveButton);
+    runawayBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cakeCaught++;
+      document.getElementById('cake-score').textContent = `Uhvaćeno: ${cakeCaught} / 5`;
+      playNote(600 + cakeCaught * 100, 200);
+      spawnConfetti(10);
+      if (cakeCaught >= 5) {
+        runawayBtn.textContent = '🎂 OK, POJEDI ME 😭';
+        runawayBtn.style.position = 'static';
+        runawayBtn.style.margin = 'auto';
+        runawayBtn.style.display = 'block';
+        gameArea.style.display = 'flex';
+        gameArea.style.alignItems = 'center';
+        gameArea.style.justifyContent = 'center';
+        runawayBtn.removeEventListener('mouseenter', moveButton);
+        checkFinalReveal();
+      } else {
+        moveButton();
+      }
+    });
+
+    moveButton();
+
+    // ============ CANDLES ============
+    const candlesEl = document.getElementById('candles');
+    let candlesLeft = 12;
+    for (let i = 0; i < 12; i++) {
+      const c = document.createElement('span');
+      c.className = 'candle';
+      c.textContent = '🕯️';
+      c.addEventListener('click', function () {
+        if (this.classList.contains('blown')) return;
+        this.classList.add('blown');
+        this.textContent = '💨';
+        candlesLeft--;
+        document.getElementById('candle-score').textContent =
+          candlesLeft > 0 ? `Preostalo: ${candlesLeft} svijeća 👻` : '👻 DUH OTIŠAO! SVE SI PUHAO! 🎉';
+        playNote(300 - candlesLeft * 10, 150, 'triangle');
+        if (candlesLeft === 0) {
+          spawnConfetti(40);
+          checkFinalReveal();
+        }
+      });
+      candlesEl.appendChild(c);
+    }
+
+    // ============ AGE CALCULATOR ============
+    let fakeAge = 0;
+    let calcClicks = 0;
+    document.getElementById('calc-age-btn').addEventListener('click', () => {
+      calcClicks++;
+      const base = 18 + Math.floor(Math.random() * 5);
+      fakeAge = base + (calcClicks - 1) * Math.floor(Math.random() * 7 + 3);
+      const display = document.getElementById('age-display');
+      display.textContent = fakeAge;
+      display.style.transform = `rotate(${calcClicks * 15}deg) scale(${1 + calcClicks * 0.1})`;
+      playNote(200 + fakeAge * 2, 300, 'sawtooth');
+
+      const comments = [
+        'Hmm, zanimljivo...',
+        'Čekaj, brojim ponovo...',
+        'Ovo ne može biti točno...',
+        'Znanost je zbunjena.',
+        'Preporučujem drugo mišljenje.',
+        'Konzultiram sveučilište...',
+        'REZULTAT POTVRĐEN. ŽALIM.',
+      ];
+      if (calcClicks <= comments.length) {
+        display.title = comments[calcClicks - 1];
+      }
+      document.getElementById('add-age-btn').style.display = 'inline-block';
+      if (calcClicks >= 3) checkFinalReveal();
+    });
+
+    document.getElementById('add-age-btn').addEventListener('click', () => {
+      fakeAge += Math.floor(Math.random() * 10 + 5);
+      document.getElementById('age-display').textContent = fakeAge + '?!';
+      playSillyBurst();
+      spawnConfetti(5);
+    });
+
+    // ============ FINAL REVEAL ============
+    let revealChecks = { cake: false, candles: false, age: false };
+    function checkFinalReveal() {
+      if (cakeCaught >= 5) revealChecks.cake = true;
+      if (candlesLeft === 0) revealChecks.candles = true;
+      if (calcClicks >= 3) revealChecks.age = true;
+      if (revealChecks.cake && revealChecks.candles && revealChecks.age) {
+        document.getElementById('final-reveal').classList.add('show');
+        spawnConfetti(150);
+        playSillyBurst();
+      }
+    }
+
+    // ============ FLOATING EMOJI ON CLICK ============
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('#gate') || e.target.closest('#password-gate')) return;
+      const emojis = ['🎂', '🎈', '🎉', '🥳', '🍾', '🎁', '🕯️', '🎊', '💃', '🪩'];
+      const el = document.createElement('div');
+      el.className = 'floating-emoji';
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.left = e.clientX + 'px';
+      el.style.top = e.clientY + 'px';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 2000);
+    });
+
+    // Ambient confetti
+    setInterval(() => { if (document.getElementById('main').classList.contains('visible')) spawnConfetti(3); }, 3000);
+  </script>
+</body>
+
+</html>
