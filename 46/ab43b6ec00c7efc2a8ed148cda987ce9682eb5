@@ -1,0 +1,14 @@
+portfolio/static/kirkosaurus.html
+  h_df12c230a9601a 1-1217
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.13",
+  "base_commit_sha": "46ab43b6ec00c7efc2a8ed148cda987ce9682eb5",
+  "prompts": {},
+  "humans": {
+    "h_df12c230a9601a": {
+      "author": "Danijel Vincijanovic <danijel.vincijanovic@gmail.com>"
+    }
+  }
+}
