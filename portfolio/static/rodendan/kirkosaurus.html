@@ -293,6 +293,44 @@
       }
     }
 
+    .hero-audio-wrap {
+      display: block;
+      margin-top: 1.5rem;
+      width: min(100%, 440px);
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(180deg, #fff9e8 0%, #f3e8ff 100%);
+      border: 2px solid #ffbe0b;
+      border-radius: 16px;
+      box-shadow: 0 4px 28px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-audio {
+      display: block;
+      width: 100%;
+      height: 44px;
+      border-radius: 10px;
+      outline: none;
+      color-scheme: light;
+      background: #fff;
+    }
+
+    .hero-audio::-webkit-media-controls-enclosure {
+      background: #fff;
+      border-radius: 10px;
+    }
+
+    .hero-audio::-webkit-media-controls-panel {
+      background: #fff;
+      border-radius: 10px;
+    }
+
+    .hero-audio::-webkit-media-controls-play-button,
+    .hero-audio::-webkit-media-controls-mute-button {
+      filter: none;
+    }
+
     .hero .subtitle {
       font-size: clamp(1rem, 3vw, 1.5rem);
       margin-top: 1rem;
@@ -516,6 +554,21 @@
       align-items: center;
     }
 
+    .popup-close {
+      cursor: pointer;
+      padding: 0 6px;
+      line-height: 1.2;
+      font-size: 14px;
+      border: 1px outset #fff;
+      background: #c0c0c0;
+      color: #000;
+    }
+
+    .popup-close:hover {
+      background: #ff006e;
+      color: #fff;
+    }
+
     .popup-body {
       padding: 16px;
       display: flex;
@@ -695,6 +748,11 @@
   <main class="container" id="main">
     <section class="hero">
       <h1>SRETAN ROĐENDAN KIRKOSAURUS OD KUMAŠINA!</h1>
+      <div class="hero-audio-wrap">
+        <audio id="sankeru-player" class="hero-audio" controls loop preload="auto">
+          <source src="sankeru.mp3" type="audio/mpeg" />
+        </audio>
+      </div>
       <p class="subtitle">🎉 Službeno si stariji. Čestitam i suosjećam. 🎉</p>
     </section>
 
@@ -713,7 +771,7 @@
 
     <!-- ROAST MESSAGE -->
     <div class="card">
-      <h2>💌 Osobna poruka od tvog "prijatelja"</h2>
+      <h2>💌 Osobna poruka od tvog kumašina</h2>
       <p>
         Dragi moj <strong>vječni rođendanski ratnik</strong>,
       </p>
@@ -791,7 +849,8 @@
 
   <!-- FAKE POPUPS -->
   <div class="fake-popup" id="popup1" style="top:20%; left:10%;">
-    <div class="popup-title"><span>🎂 Windows Rođendan</span><span>✕</span></div>
+    <div class="popup-title"><span>🎂 Windows Rođendan</span><span class="popup-close" onclick="closePopup('popup1')"
+        role="button" aria-label="Zatvori">✕</span></div>
     <div class="popup-body">
       <div class="popup-icon">⚠️</div>
       <div>Upozorenje: Detektirana je <strong>kritična razina starosti</strong>. Preporučujemo odmah slavlje.</div>
@@ -800,7 +859,8 @@
   </div>
 
   <div class="fake-popup" id="popup2" style="top:35%; right:5%;">
-    <div class="popup-title"><span>🦠 Rođendanski Virus</span><span>✕</span></div>
+    <div class="popup-title"><span>🦠 Rođendanski Virus</span><span class="popup-close" onclick="closePopup('popup2')"
+        role="button" aria-label="Zatvori">✕</span></div>
     <div class="popup-body">
       <div class="popup-icon">🎈</div>
       <div>Baloni.exe se uspješno instalirao u tvoj mozak. Nema deinstalacije.</div>
@@ -810,7 +870,8 @@
   </div>
 
   <div class="fake-popup" id="popup3" style="bottom:25%; left:20%;">
-    <div class="popup-title"><span>💾 Spremi rođendan?</span><span>✕</span></div>
+    <div class="popup-title"><span>💾 Spremi rođendan?</span><span class="popup-close" onclick="closePopup('popup3')"
+        role="button" aria-label="Zatvori">✕</span></div>
     <div class="popup-body">
       <div class="popup-icon">🍰</div>
       <div>Želiš li spremiti ovaj rođendan? <br><em>Nedovoljno prostora na disku (život je prekratak).</em></div>
@@ -866,7 +927,6 @@
       if (!parsed) {
         birthdayInput.classList.add('error');
         passwordError.textContent = 'Format nije dobar! Koristi DD.MM.GGGG 🙄';
-        playNote(150, 200, 'sawtooth');
         setTimeout(() => birthdayInput.classList.remove('error'), 400);
         return;
       }
@@ -875,7 +935,6 @@
         passwordError.textContent = '';
         passwordError.style.color = '#06d6a0';
         passwordError.textContent = '✅ TOČNO! Ulaziš u ludilo...';
-        playSillyBurst();
         spawnConfetti(50);
         setTimeout(() => {
           document.getElementById('password-gate').style.display = 'none';
@@ -889,7 +948,6 @@
       passwordError.style.color = '#ff006e';
       passwordError.textContent = wrongMessages[Math.min(passwordAttempts - 1, wrongMessages.length - 1)];
       attemptsBadge.textContent = `Neuspjelih pokušaja: ${passwordAttempts} 🎯`;
-      playNote(100 + passwordAttempts * 30, 300, 'square');
       spawnConfetti(5);
       setTimeout(() => birthdayInput.classList.remove('error'), 400);
       birthdayInput.value = '';
@@ -918,65 +976,27 @@
       }
     }
 
-    // ============ SILLY MUSIC (Web Audio API) ============
-    let audioCtx = null;
+    // ============ MUSIC ============
     let musicPlaying = false;
-    let musicInterval = null;
-
-    const sillyMelody = [
-      { note: 523, dur: 200 }, { note: 523, dur: 100 }, { note: 587, dur: 400 },
-      { note: 523, dur: 400 }, { note: 698, dur: 400 }, { note: 659, dur: 800 },
-      { note: 523, dur: 200 }, { note: 523, dur: 100 }, { note: 587, dur: 400 },
-      { note: 523, dur: 400 }, { note: 784, dur: 400 }, { note: 698, dur: 800 },
-      { note: 523, dur: 200 }, { note: 523, dur: 100 }, { note: 1047, dur: 400 },
-      { note: 880, dur: 400 }, { note: 698, dur: 400 }, { note: 659, dur: 400 },
-      { note: 587, dur: 800 },
-      // silly extra notes
-      { note: 330, dur: 150 }, { note: 440, dur: 150 }, { note: 550, dur: 150 },
-      { note: 880, dur: 300 }, { note: 784, dur: 300 }, { note: 698, dur: 600 },
-    ];
-
-    function playNote(freq, duration, type = 'square') {
-      if (!audioCtx) return;
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = type;
-      osc.frequency.value = freq + (Math.random() * 20 - 10); // slightly off-key = silly
-      gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration / 1000);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration / 1000);
-    }
-
-    function playSillyBurst() {
-      const sillyNotes = [200, 300, 400, 500, 600, 800, 1000, 150];
-      sillyNotes.forEach((n, i) => {
-        setTimeout(() => playNote(n, 100, ['square', 'sawtooth', 'triangle'][i % 3]), i * 80);
-      });
-    }
-
-    let melodyIndex = 0;
-    function playMelodyStep() {
-      if (!musicPlaying) return;
-      const step = sillyMelody[melodyIndex % sillyMelody.length];
-      const types = ['square', 'sawtooth', 'triangle'];
-      playNote(step.note, step.dur, types[melodyIndex % 3]);
-      melodyIndex++;
-    }
-
-    function startMusic() {
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const sankeruPlayer = document.getElementById('sankeru-player');
+    sankeruPlayer.addEventListener('play', () => {
       musicPlaying = true;
       document.getElementById('music-toggle').textContent = '🔊';
-      playMelodyStep();
-      musicInterval = setInterval(playMelodyStep, 250);
+    });
+    sankeruPlayer.addEventListener('pause', () => {
+      musicPlaying = false;
+      document.getElementById('music-toggle').textContent = '🔇';
+    });
+
+    function startMusic() {
+      musicPlaying = true;
+      document.getElementById('music-toggle').textContent = '🔊';
+      sankeruPlayer.play().catch(() => { });
     }
 
     function stopMusic() {
       musicPlaying = false;
-      clearInterval(musicInterval);
+      sankeruPlayer.pause();
       document.getElementById('music-toggle').textContent = '🔇';
     }
 
@@ -989,7 +1009,6 @@
     let enterClicks = 0;
     document.getElementById('enter-btn').addEventListener('click', function (e) {
       enterClicks++;
-      playSillyBurst();
       spawnConfetti(20);
 
       if (enterClicks < 7) {
@@ -1019,7 +1038,6 @@
 
     function showPopup(id) {
       document.getElementById(id).classList.add('show');
-      playSillyBurst();
     }
 
     function closePopup(id) {
@@ -1048,7 +1066,6 @@
       output.innerHTML = '';
       progress.style.width = '0%';
       this.disabled = true;
-      playSillyBurst();
 
       for (let i = 0; i < scanResults.length; i++) {
         await new Promise(r => setTimeout(r, 400 + Math.random() * 300));
@@ -1058,7 +1075,6 @@
         line.style.animationDelay = '0s';
         output.appendChild(line);
         progress.style.width = ((i + 1) / scanResults.length * 100) + '%';
-        playNote(400 + i * 50, 100, 'sawtooth');
         output.scrollTop = output.scrollHeight;
       }
 
@@ -1075,7 +1091,6 @@
     });
 
     document.getElementById('panic-btn').addEventListener('click', () => {
-      playSillyBurst();
       spawnConfetti(80);
       document.body.style.animation = 'rainbow 0.5s ease infinite';
       alert('PANIKA NE POMOŽE. ROĐENDAN JE NEIZBJEŽAN. 🎂');
@@ -1106,7 +1121,6 @@
       e.stopPropagation();
       cakeCaught++;
       document.getElementById('cake-score').textContent = `Uhvaćeno: ${cakeCaught} / 5`;
-      playNote(600 + cakeCaught * 100, 200);
       spawnConfetti(10);
       if (cakeCaught >= 5) {
         runawayBtn.textContent = '🎂 OK, POJEDI ME 😭';
@@ -1139,7 +1153,6 @@
         candlesLeft--;
         document.getElementById('candle-score').textContent =
           candlesLeft > 0 ? `Preostalo: ${candlesLeft} svijeća 👻` : '👻 DUH OTIŠAO! SVE SI PUHAO! 🎉';
-        playNote(300 - candlesLeft * 10, 150, 'triangle');
         if (candlesLeft === 0) {
           spawnConfetti(40);
           checkFinalReveal();
@@ -1158,7 +1171,6 @@
       const display = document.getElementById('age-display');
       display.textContent = fakeAge;
       display.style.transform = `rotate(${calcClicks * 15}deg) scale(${1 + calcClicks * 0.1})`;
-      playNote(200 + fakeAge * 2, 300, 'sawtooth');
 
       const comments = [
         'Hmm, zanimljivo...',
@@ -1179,7 +1191,6 @@
     document.getElementById('add-age-btn').addEventListener('click', () => {
       fakeAge += Math.floor(Math.random() * 10 + 5);
       document.getElementById('age-display').textContent = fakeAge + '?!';
-      playSillyBurst();
       spawnConfetti(5);
     });
 
@@ -1192,7 +1203,6 @@
       if (revealChecks.cake && revealChecks.candles && revealChecks.age) {
         document.getElementById('final-reveal').classList.add('show');
         spawnConfetti(150);
-        playSillyBurst();
       }
     }
 
